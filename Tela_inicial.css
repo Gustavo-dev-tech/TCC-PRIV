@@ -1,0 +1,46 @@
+
+div{
+    display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100vw;
+   height: 100vh;
+   background-color: white;
+   }
+   div{
+       width: 80%; /* Ajuste conforme necessário */
+       max-width: 400px; /* Ajuste conforme necessário */
+       padding: 20px;
+       text-align: center;   
+   }
+   h1{
+       font-size: 2.6em;
+       font-family: Roboto;
+       color: black;
+   }
+   
+   h3{
+       font-size: 1em;
+       font-family: Arial, Helvetica, sans-serif;
+       color: black;
+   }
+   .Entrar{
+       color: white;
+       background-color: #30FA2D;
+       font-family: Arial, Helvetica, sans-serif;
+       font-size: 1em;
+       font-weight: bolder;
+   
+       border: 1px solid black; /* Cor e espessura da borda */
+       border-radius: 21px; /* Valor para bordas arredondadas */
+       padding: 10px; /* Espaçamento interno */
+       width: 300px; /* Largura do input (ajustável) */
+   
+   }
+   .Entrar:hover {
+       color: white;
+       
+   }
+   .Entrar:active {
+       box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Sombra projetada */
+   }
