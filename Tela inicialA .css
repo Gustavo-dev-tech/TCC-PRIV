@@ -26,7 +26,7 @@ h3{
 }
 .Entrar{
     color:white;
-    background-color:#30FA2D ;
+    background-color:#A9E08F ;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1em;
     font-weight: bold;
@@ -34,18 +34,17 @@ h3{
     border: 1px solid black; /* Cor e espessura da borda */
     border-radius: 21px; /* Valor para bordas arredondadas */
     padding: 10px; /* Espaçamento interno */
-    width: 300px; /* Largura do input (ajustável) */
+    width: 380px; /* Largura do input (ajustável) */
 
     
 }
-#Esqueci{
-    font-size: 0.8em;
-    border: #4B97DE;
-    background-color: #4B97DE;
+.Entrar:hover {
+    color: white;
+    
 }
-
-
-
+.Entrar:active {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Sombra projetada */
+}
 
 
 

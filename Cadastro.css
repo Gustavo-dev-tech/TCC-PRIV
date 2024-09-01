@@ -22,14 +22,14 @@ h1{
     font-size: 1em;
     font-weight: bold;
 
-    border: 1px solid rgb(0, 0, 0); /* Cor e espessura da borda */
-    border-radius: 21px; /* Valor para bordas arredondadas */
-    padding: 9px; /* Espaçamento interno */
-    width: 300px; /* Largura do input (ajustável) */
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 22px; /* para bordas arredondadas */
+    padding: 11px; /* Espaçamento interno */
+    width: 360px; /* Largura do input (ajustável) */
 }
 .enviar{
     color: rgb(255, 255, 255);
-    background-color:#30FA2D;
+    background-color:#A9E08F;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1em;
     font-weight: bolder;
