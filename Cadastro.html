@@ -11,12 +11,13 @@
     <link rel="stylesheet" href="Cadastro.css">
 </head>
 <body>
-    <div>
-        <form action="Cadastro.php" method="post">
-            <br><br><br>
+    <div class="formulario">
+        <form class="form" action="Cadastro.php" method="post">
+            <a href="Tela inicial.html">
+                <p>🔙</p>
+            </a>
             <img src="Mídia.png" alt="Logo da marca">
-            <h1>Insira seus dados</h1>
-
+            <h4>Insira seus dados</h4>
             <label for="name"></label>
                 <input type="text" class="insirir" id="name" name="name" placeholder="Nome completo" required>
             <br><br>
@@ -32,14 +33,12 @@
             <label for="password"></label>
                 <input type="password" class="insirir" id="password" name="password" placeholder="Senha" required>
                 <br><br>
-
             <label for="confirm_password"></label>
                 <input type="password" class="insirir" id="confirm_password" name="confirm_password" placeholder="Confirmar Senha" required>
                 <br><br>
 
             <input type="submit" class="enviar" value="Cadastrar">
-            <br><br>
-            <input type="submit" class="enviar" value="Voltar">
+            <br><br><br>
         </form>
     </div>
 </body>
