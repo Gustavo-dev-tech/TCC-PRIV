@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body, html {
+    height: 100%;
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;     /* Centraliza verticalmente */
+    background-color: #f0f0f0; /* Cor de fundo opcional */
+}
+.form {
+    background-color: #fff; /* Cor de fundo do formulário */
+    padding: 20px;          /* Espaçamento interno do formulário */
+    border-radius: 8px;     /* Bordas arredondadas */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    width: 101%;            /* Faz o formulário ocupar toda a largura do contêiner */
+    height: 900px;
+}
+.formulario {
+    flex-direction: column; /* Coloca a imagem e o formulário em coluna */
+    align-items: center;    /* Centraliza itens na horizontal */
+    text-align: center;     /* Centraliza texto dentro do contêiner */
+    width: 100%;      /* Define uma largura máxima */
+    height: 100%;
+}
+div{
+    display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: white; 
+   }
+h2,h3,h4,h5,h6{
+    font-family: Roboto;
+    color: black;
+}
+img{
+    max-width: 40%;  /* Ajusta a largura da imagem */
+    height: auto;      /* Mantém a proporção da imagem */
+    margin-bottom: -25px; /* Espaçamento entre imagem e formulário */
+}
+.insirir{
+    font-family: Roboto;
+    font-size: 1em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 22px; /* para bordas arredondadas */
+    padding: 10px; /* Espaçamento interno */
+    width: 80%; /* Largura do input (ajustável) */
+}
+.enviar{
+    color: rgb(255, 255, 255);
+    background-color:#A9E08F;
+    font-family: Roboto;
+    font-size: 1em;
+    font-weight: bolder;
+
+    margin-bottom: 15px;
+    border: 1px solid black; /* Cor e espessura da borda */
+    border-radius: 22px; /* Valor para bordas arredondadas */
+    padding: 10px 20px; /* Espaçamento interno */
+    width: 80%; /* Largura do input (ajustável) */
+
+}
+.enviar:active {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Sombra projetada */
+}
+
+.profile-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+button {
+    background-color: #4CAF50; /* Cor verde para o botão */
+    color: white;
+    border-radius: 22px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+#remove-photo-btn {
+    background-color: #f44336; /* Cor vermelha para o botão de remover */
+    border-radius: 22px;
+}
+
+button:hover {
+    opacity: 0.8; /* Efeito de hover */
+}
+
+.profile-picture {
+    margin-top: 20px;
+}
+
+#profile-img {
+    width: 150px; /* Ajuste o tamanho da imagem do perfil */
+    height: 150px;
+    border-radius: 50%; /* Torna a imagem redonda */
+    object-fit: cover;
+    border: 2px solid #ccc; /* Borda da imagem */
+}

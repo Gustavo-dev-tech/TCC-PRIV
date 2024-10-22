@@ -8,10 +8,73 @@
     <style>
         body { margin: 0; padding: 0; }
         #map { height: 100vh; }
+
+.search-bar {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000; /* Para garantir que o input fique sobre o mapa */
+    display: flex;
+    align-items: center;
+    background-color: #A9E08F; /* Cor de fundo verde */
+    border-radius: 50px;
+    padding: 0.5px;
+    box-shadow: 10px; /* Remove sombra */
+    border: none; /* Remove borda */
+    outline: none; /* Remove outline */
+}
+
+.search-bar input {
+    border: 10px;
+    outline: none;
+    background: none;
+    flex-grow: 1;
+    font-size: 16px; /* Tamanho da fonte */
+    color: white; /* Cor do texto do input */
+    padding: 1px; /* Adiciona padding para aumentar o tamanho do input */
+    height: 40px; /* Ajusta a altura do input */
+    min-width: 300px; /* Define uma largura mínima para o input */
+}
+
+/* Cor da placeholder */
+.search-bar input::placeholder {
+    color: white; /* Muda a cor da placeholder para branco */
+    opacity: 1; /* Define a opacidade para 1 */
+}
+
+.search-bar button {
+    background: none;
+    border: 10px;
+    cursor: pointer;
+    color: white; /* Cor do texto do botão (se houver texto) */
+}
+
+.search-bar button img {
+    width: 20px;
+    height: 20px;
+}
+
+.Logo{
+    width: 20px; /* Altere para o tamanho desejado */
+    height: auto; /* Mantém a proporção da imagem */
+    display: block;
+    margin: 10px; /* Centraliza a logo horizontalmente, se necessário */
+}
+
+
     </style>
 </head>
 <body>
+    <div class="search-bar">
+        <img src="https://s10.aconvert.com/convert/p3r68-cdx67/avhax-xe3ov.jpg" alt="Logo Presente Dourado" class="Logo">
+        <input id="search-input" type="text"   placeholder="Pesquise pela Etec mais próxima">
+       
 
+        <button onclick="searchEtec()">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/search.png" alt="Search Icon">
+        </button>
+    </div>
     <div id="map"></div>
 
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.js"></script>
@@ -27,330 +90,7 @@
         // Dados das ETECs
         const etecs = [
     { name: "ETEC de São Paulo", latitude: -23.5505, longitude: -46.6333 },
-    { name: "ETEC de Campinas", latitude: -22.9056, longitude: -47.0609 },
-    { name: "ETEC de Sorocaba", latitude: -23.5016, longitude: -47.5231 },
-    { name: "ETEC de São Bernardo do Campo", latitude: -23.6980, longitude: -46.5652 },
-    { name: "ETEC de Barueri", latitude: -23.5007, longitude: -46.8780 },
-    { name: "ETEC de São José dos Campos", latitude: -23.2237, longitude: -45.9009 },
-    { name: "ETEC de São Vicente", latitude: -23.9702, longitude: -46.3861 },
-    { name: "ETEC de Guarulhos", latitude: -23.4654, longitude: -46.5383 },
-    { name: "ETEC de Itapecerica da Serra", latitude: -23.6610, longitude: -47.3168 },
-    { name: "ETEC de Diadema", latitude: -23.6848, longitude: -46.6224 },
-    { name: "ETEC de Ribeirão Preto", latitude: -21.1709, longitude: -47.8103 },
-    { name: "ETEC de Bauru", latitude: -23.0020, longitude: -49.0599 },
-    { name: "ETEC de São Carlos", latitude: -22.0052, longitude: -47.8974 },
-    { name: "ETEC de Presidente Prudente", latitude: -22.1204, longitude: -51.3854 },
-    { name: "ETEC de Piracicaba", latitude: -23.7264, longitude: -47.6484 },
-    { name: "ETEC de Marília", latitude: -22.2160, longitude: -50.2201 },
-    { name: "ETEC de Santos", latitude: -23.9537, longitude: -46.3289 },
-    { name: "ETEC de Jundiaí", latitude: -23.1857, longitude: -46.8978 },
-    { name: "ETEC de Americana", latitude: -22.7384, longitude: -47.3305 },
-    { name: "ETEC de São João da Boa Vista", latitude: -22.1877, longitude: -46.7868 },
-    { name: "ETEC de São Miguel", latitude: -23.5664, longitude: -46.4541 },
-    { name: "ETEC de Itanhaém", latitude: -24.1836, longitude: -47.0182 },
-    { name: "ETEC de Mogi das Cruzes", latitude: -23.5226, longitude: -46.1980 },
-    { name: "ETEC de Indaiatuba", latitude: -23.0892, longitude: -47.2113 },
-    { name: "ETEC de São Roque", latitude: -23.5011, longitude: -47.1040 },
-    { name: "ETEC de Tatuí", latitude: -23.3543, longitude: -47.5025 },
-    { name: "ETEC de Registro", latitude: -24.4931, longitude: -47.8286 },
-    { name: "ETEC de Barretos", latitude: -20.5850, longitude: -48.5737 },
-    { name: "ETEC de Marília", latitude: -22.2160, longitude: -50.2201 },
-    { name: "ETEC de Sorocaba", latitude: -23.5016, longitude: -47.5231 },
-    { name: "ETEC de Santo André", latitude: -23.6542, longitude: -46.5334 },
-    { name: "ETEC de São Sebastião", latitude: -23.7858, longitude: -45.4084 },
-    { name: "ETEC de São Pedro", latitude: -23.1869, longitude: -47.5261 },
-    { name: "ETEC de São Vicente", latitude: -23.9742, longitude: -46.3855 },
-    { name: "ETEC de Votuporanga", latitude: -20.3972, longitude: -49.9932 },
-    { name: "ETEC de Itapetininga", latitude: -23.5850, longitude: -47.5228 },
-    { name: "ETEC de Araras", latitude: -22.3595, longitude: -47.3960 },
-    { name: "ETEC de Campo Limpo Paulista", latitude: -23.2039, longitude: -47.2682 },
-    { name: "ETEC de Bariri", latitude: -23.1301, longitude: -47.4396 },
-    { name: "ETEC de Capivari", latitude: -23.1139, longitude: -47.5481 },
-    { name: "ETEC de Santa Bárbara d'Oeste", latitude: -22.7470, longitude: -47.5501 },
-    { name: "ETEC de São Carlos", latitude: -22.0056, longitude: -47.8979 },
-    { name: "ETEC de Caraguatatuba", latitude: -23.6090, longitude: -45.4404 },
-    { name: "ETEC de Araraquara", latitude: -21.7915, longitude: -48.1760 },
-    { name: "ETEC de Jundiaí", latitude: -23.1855, longitude: -46.8978 },
-    { name: "ETEC de Assis", latitude: -23.1022, longitude: -50.4142 },
-    { name: "ETEC de Pindamonhangaba", latitude: -22.9215, longitude: -45.4136 },
-    { name: "ETEC de Americana", latitude: -23.7864, longitude: -47.3330 },
-    { name: "ETEC de Itapeva", latitude: -23.8887, longitude: -47.3844 },
-    { name: "ETEC de Bauru", latitude: -23.2733, longitude: -47.4580 },
-    { name: "ETEC de São João da Boa Vista", latitude: -22.0320, longitude: -46.7467 },
-    { name: "ETEC de Botucatu", latitude: -23.1941, longitude: -47.5112 },
-    { name: "ETEC de São Miguel Paulista", latitude: -23.5695, longitude: -46.4650 },
-    { name: "ETEC de Piracicaba", latitude: -23.6505, longitude: -47.6483 },
-    { name: "ETEC de Lins", latitude: -21.6614, longitude: -47.5042 },
-    { name: "ETEC de São Roque", latitude: -23.5026, longitude: -47.1321 },
-    { name: "ETEC de Vargem Grande Paulista", latitude: -23.3188, longitude: -47.0274 },
-    { name: "ETEC de Nova Odessa", latitude: -23.3461, longitude: -47.4440 },
-    { name: "ETEC de São Sebastião do Paraíso", latitude: -20.8925, longitude: -46.6875 },
-    { name: "ETEC de Avaré", latitude: -23.1008, longitude: -47.5096 },
-    { name: "ETEC de São João da Boa Vista", latitude: -22.0320, longitude: -46.7467 },
-    { name: "ETEC de Bauru", latitude: -23.2733, longitude: -47.4580 },
-    { name: "ETEC de Piracicaba", latitude: -23.6505, longitude: -47.6483 },
-    { name: "ETEC de Botucatu", latitude: -23.1941, longitude: -47.5112 },
-    { name: "ETEC de São Miguel Paulista", latitude: -23.5695, longitude: -46.4650 },
-    { name: "ETEC de Marília", latitude: -22.2160, longitude: -50.2201 },
-    { name: "ETEC de Caraguatatuba", latitude: -23.6090, longitude: -45.4404 },
-    { name: "ETEC de Araraquara", latitude: -21.7915, longitude: -48.1760 },
-    { name: "ETEC de Jundiaí", latitude: -23.1855, longitude: -46.8978 },
-    { name: "ETEC de Assis", latitude: -23.1022, longitude: -50.4142 },
-    { name: "ETEC de Pindamonhangaba", latitude: -22.9215, longitude: -45.4136 },
-    { name: "ETEC de São Roque", latitude: -23.5026, longitude: -47.1321 },
-    { name: "ETEC de Lins", latitude: -21.6614, longitude: -47.5042 },
-    { name: "ETEC de Nova Odessa", latitude: -23.3461, longitude: -47.4440 },
-    { name: "ETEC de São Sebastião do Paraíso", latitude: -20.8925, longitude: -46.6875 },
-    { name: "ETEC de Itapeva", latitude: -23.8887, longitude: -47.3844 },
-    { name: "ETEC de Santa Bárbara d'Oeste", latitude: -22.7470, longitude: -47.5501 },
-    { name: "ETEC de São Carlos", latitude: -22.0056, longitude: -47.8979 },
-    { name: "ETEC de Vargem Grande Paulista", latitude: -23.3188, longitude: -47.0274 },
-    { name: "ETEC de São José do Rio Preto", latitude: -20.8184, longitude: -49.3792 },
-    { name: "ETEC de São Pedro", latitude: -23.1893, longitude: -47.5571 },
-    { name: "ETEC de Presidente Prudente", latitude: -22.1211, longitude: -51.3923 },
-    { name: "ETEC de Ourinhos", latitude: -23.2278, longitude: -49.8708 },
-    { name: "ETEC de Itatiba", latitude: -23.0078, longitude: -46.8500 },
-    { name: "ETEC de Jaguariúna", latitude: -22.6307, longitude: -46.9744 },
-    { name: "ETEC de Fernandópolis", latitude: -20.2948, longitude: -50.2441 },
-    { name: "ETEC de Campos do Jordão", latitude: -22.7487, longitude: -45.5923 },
-    { name: "ETEC de Olímpia", latitude: -20.7342, longitude: -48.1880 },
-    { name: "ETEC de São Paulo - Centro", latitude: -23.5505, longitude: -46.6333 },
-    { name: "ETEC de Cotia", latitude: -23.6320, longitude: -47.0979 },
-    { name: "ETEC de Itu", latitude: -23.0694, longitude: -47.2030 },
-    { name: "ETEC de Sumaré", latitude: -22.8192, longitude: -47.2654 },
-    { name: "ETEC de Mogi das Cruzes", latitude: -23.5226, longitude: -46.1865 },
-    { name: "ETEC de Sorocaba", latitude: -23.5016, longitude: -47.5231 },
-    { name: "ETEC de Tatuí", latitude: -23.3542, longitude: -47.8490 },
-    { name: "ETEC de Araçatuba", latitude: -21.2089, longitude: -50.4336 },
-    { name: "ETEC de Votuporanga", latitude: -20.4163, longitude: -49.9884 },
-    { name: "ETEC de Assis Chateaubriand", latitude: -20.7385, longitude: -48.5000 },
-    { name: "ETEC de Ribeirão Preto", latitude: -21.1726, longitude: -47.8103 },
-    { name: "ETEC de Santo André", latitude: -23.6559, longitude: -46.5337 },
-    { name: "ETEC de Santos", latitude: -23.9530, longitude: -46.3322 },
-    { name: "ETEC de São Caetano do Sul", latitude: -23.6104, longitude: -46.5656 },
-    { name: "ETEC de Embu das Artes", latitude: -23.6518, longitude: -47.4560 },
-    { name: "ETEC de São Vicente", latitude: -23.9702, longitude: -46.3861 },
-    { name: "ETEC de Botucatu", latitude: -23.1941, longitude: -47.5112 },
-    { name: "ETEC de Lins", latitude: -21.6614, longitude: -47.5042 },
-    { name: "ETEC de Sumaré", latitude: -22.8368, longitude: -47.2520 },
-    { name: "ETEC de São Pedro", latitude: -23.1893, longitude: -47.5571 },
-    { name: "ETEC de São João da Boa Vista", latitude: -22.0320, longitude: -46.7467 },
-    { name: "ETEC de São José do Rio Preto", latitude: -20.8190, longitude: -49.3730 },
-    { name: "ETEC de São Paulo - Zona Norte", latitude: -23.4780, longitude: -46.6253 },
-    { name: "ETEC de São Paulo - Zona Sul", latitude: -23.6204, longitude: -46.6850 },
-    { name: "ETEC de Caçapava", latitude: -23.0330, longitude: -45.7808 },
-    { name: "ETEC de Santa Cruz do Rio Pardo", latitude: -23.0354, longitude: -49.0958 },
-    { name: "ETEC de Adamantina", latitude: -21.1097, longitude: -50.2285 },
-    { name: "ETEC de Mandaguari", latitude: -23.2340, longitude: -48.1990 },
-    { name: "ETEC de São Bento do Sapucaí", latitude: -22.7125, longitude: -44.8731 },
-    { name: "ETEC de Paraguaçu Paulista", latitude: -23.2415, longitude: -50.4726 },
-    { name: "ETEC de São Sebastião", latitude: -23.7826, longitude: -45.4117 },
-    { name: "ETEC de São Vicente", latitude: -23.9702, longitude: -46.3861 },
-    { name: "ETEC de Batatais", latitude: -21.0519, longitude: -47.7754 },
-    { name: "ETEC de São José do Rio Pardo", latitude: -21.1215, longitude: -47.7755 },
-    { name: "ETEC de Estrela do Norte", latitude: -21.0730, longitude: -48.9620 },
-    { name: "ETEC de Ipiranga", latitude: -23.6050, longitude: -46.6105 },
-    { name: "ETEC de Sorocaba", latitude: -23.5016, longitude: -47.5231 },
-    { name: "ETEC de São Carlos", latitude: -22.0058, longitude: -47.8976 },
-    { name: "ETEC de Santo André", latitude: -23.6630, longitude: -46.5336 },
-    { name: "ETEC de Indaiatuba", latitude: -23.0836, longitude: -47.2024 },
-    { name: "ETEC de Jundiaí", latitude: -23.1854, longitude: -46.8978 },
-    { name: "ETEC de Tatuí", latitude: -23.3516, longitude: -47.5011 },
-    { name: "ETEC de São João da Boa Vista", latitude: -21.9706, longitude: -46.7990 },
-    { name: "ETEC de Americana", latitude: -23.7900, longitude: -47.3432 },
-    { name: "ETEC de São Vicente", latitude: -23.9702, longitude: -46.3861 },
-    { name: "ETEC de Araçatuba", latitude: -21.2085, longitude: -50.4353 },
-    { name: "ETEC de Caieiras", latitude: -23.3265, longitude: -46.9315 },
-    { name: "ETEC de Bertioga", latitude: -23.8447, longitude: -46.1152 },
-    { name: "ETEC de Cubatão", latitude: -23.8897, longitude: -46.4189 },
-    { name: "ETEC de Mogi das Cruzes", latitude: -23.5216, longitude: -46.1872 },
-    { name: "ETEC de Votuporanga", latitude: -20.4103, longitude: -49.9983 },
-    { name: "ETEC de São Sebastião", latitude: -23.7998, longitude: -45.4499 },
-    { name: "ETEC de Caraguatatuba", latitude: -23.6106, longitude: -45.6301 },
-    { name: "ETEC de Ribeirão Pires", latitude: -23.8781, longitude: -46.3914 },
-    { name: "ETEC de São Paulo", latitude: -23.5505, longitude: -46.6333 },
-    { name: "ETEC de São José dos Campos", latitude: -23.2237, longitude: -45.9009 },
-    { name: "ETEC de Botucatu", latitude: -23.2033, longitude: -47.5382 },
-    { name: "ETEC de Guarulhos", latitude: -23.4654, longitude: -46.5383 },
-    { name: "ETEC de São Carlos", latitude: -22.0058, longitude: -47.8976 },
-    { name: "ETEC de Atibaia", latitude: -22.7900, longitude: -46.5500 },
-    { name: "ETEC de Sumaré", latitude: -22.8475, longitude: -47.2633 },
-    { name: "ETEC de Jundiaí", latitude: -23.1854, longitude: -46.8978 },
-    { name: "ETEC de Itapeva", latitude: -23.9848, longitude: -47.4870 },
-    { name: "ETEC de São Pedro", latitude: -23.1825, longitude: -47.5778 },
-    { name: "ETEC de Jaboticabal", latitude: -21.2513, longitude: -48.3206 },
-    { name: "ETEC de Barueri", latitude: -23.5007, longitude: -46.8780 },
-    { name: "ETEC de São José do Rio Preto", latitude: -20.8180, longitude: -49.3797 },
-    { name: "ETEC de Taubaté", latitude: -22.7379, longitude: -45.5339 },
-    { name: "ETEC de Franca", latitude: -20.5352, longitude: -47.5329 },
-    { name: "ETEC de Sorocaba", latitude: -23.5016, longitude: -47.5231 },
-    { name: "ETEC de Olímpia", latitude: -20.7374, longitude: -48.1864 },
-    { name: "ETEC de Presidente Prudente", latitude: -22.1205, longitude: -51.3883 },
-    { name: "ETEC de Valinhos", latitude: -22.9971, longitude: -46.9970 },
-    { name: "ETEC de Carapicuíba", latitude: -23.4931, longitude: -47.3492 },
-    { name: "ETEC de Pindamonhangaba", latitude: -22.9135, longitude: -45.6793 },
-    { name: "ETEC de São Manuel", latitude: -23.2055, longitude: -47.5253 },
-    { name: "ETEC de Indaiatuba", latitude: -23.0836, longitude: -47.2024 },
-    { name: "ETEC de Itu", latitude: -23.0644, longitude: -47.4971 },
-    { name: "ETEC de Lins", latitude: -21.6764, longitude: -47.0786 },
-    { name: "ETEC de Marília", latitude: -22.2160, longitude: -50.2201 },
-    { name: "ETEC de Rio Claro", latitude: -22.4069, longitude: -47.5503 },
-    { name: "ETEC de Barretos", latitude: -20.5850, longitude: -48.5737 },
-    { name: "ETEC de Campos do Jordão", latitude: -22.7394, longitude: -45.5928 },
-    { name: "ETEC de Itapetininga", latitude: -23.5916, longitude: -47.5319 },
-    { name: "ETEC de Mirassol", latitude: -20.2933, longitude: -49.3553 },
-    { name: "ETEC de São Roque", latitude: -23.5040, longitude: -47.1205 },
-    { name: "ETEC de Cotia", latitude: -23.6039, longitude: -47.0939 },
-    { name: "ETEC de Pontal", latitude: -21.1047, longitude: -47.1632 },
-    { name: "ETEC de São Pedro", latitude: -23.1825, longitude: -47.5778 },
-    { name: "ETEC de Santa Bárbara d'Oeste", latitude: -22.7456, longitude: -47.5384 },
-    { name: "ETEC de Piedade", latitude: -23.6263, longitude: -47.5684 },
-    { name: "ETEC de Salesópolis", latitude: -23.3960, longitude: -47.7325 },
-    { name: "ETEC de São João da Boa Vista", latitude: -21.9706, longitude: -46.7990 },
-    { name: "ETEC de Itatiba", latitude: -23.0166, longitude: -46.8145 },
-    { name: "ETEC de São Paulo", latitude: -23.5505, longitude: -46.6333 },
-    { name: "ETEC de São Caetano do Sul", latitude: -23.6211, longitude: -46.5582 },
-    { name: "ETEC de Praia Grande", latitude: -24.0037, longitude: -46.3947 },
-    { name: "ETEC de Santo André", latitude: -23.6630, longitude: -46.5336 },
-    { name: "ETEC de São Vicente", latitude: -23.9702, longitude: -46.3861 },
-    { name: "ETEC de São José dos Campos", latitude: -23.2237, longitude: -45.9009 },
-    { name: "ETEC de Sorocaba", latitude: -23.5016, longitude: -47.5231 },
-    { name: "ETEC de Campos dos Goytacazes", latitude: -21.7545, longitude: -41.3298 },
-    { name: "ETEC de Volta Redonda", latitude: -22.5138, longitude: -44.1003 },
-    { name: "ETEC de Niterói", latitude: -22.8832, longitude: -43.1035 },
-    { name: "ETEC de Duque de Caxias", latitude: -22.7852, longitude: -43.3093 },
-    { name: "ETEC de Nova Iguaçu", latitude: -22.7595, longitude: -43.4600 },
-    { name: "ETEC de Magé", latitude: -22.6469, longitude: -43.0675 },
-    { name: "ETEC de São João de Meriti", latitude: -22.8454, longitude: -43.3975 },
-    { name: "ETEC de Mesquita", latitude: -22.8469, longitude: -43.4452 },
-    { name: "ETEC de Barra Mansa", latitude: -22.5031, longitude: -44.1733 },
-    { name: "ETEC de Angra dos Reis", latitude: -23.0076, longitude: -44.3182 },
-    { name: "ETEC de Resende", latitude: -22.4694, longitude: -44.4408 },
-    { name: "ETEC de Itaperuna", latitude: -21.1971, longitude: -42.0248 },
-    { name: "ETEC de São Gonçalo", latitude: -22.8286, longitude: -42.9209 },
-    { name: "ETEC de Petrópolis", latitude: -22.5018, longitude: -43.1729 },
-    { name: "ETEC de Teresópolis", latitude: -22.4150, longitude: -42.9640 },
-    { name: "ETEC de Três Rios", latitude: -22.1184, longitude: -43.2166 },
-    { name: "ETEC de Cabo Frio", latitude: -22.8914, longitude: -42.0274 },
-    { name: "ETEC de Araruama", latitude: -22.8680, longitude: -42.3376 },
-    { name: "ETEC de Silva Jardim", latitude: -22.7140, longitude: -42.7097 },
-    { name: "ETEC de Rio das Ostras", latitude: -22.5087, longitude: -41.9372 },
-    { name: "ETEC de Búzios", latitude: -22.7467, longitude: -41.8839 },
-    { name: "ETEC de Macaé", latitude: -22.3744, longitude: -41.7856 },
-    { name: "ETEC de São Sebastião do Alto", latitude: -21.9720, longitude: -42.7062 },
-    { name: "ETEC de Armação dos Búzios", latitude: -22.7443, longitude: -41.8833 },
-    { name: "ETEC de Nova Friburgo", latitude: -22.2854, longitude: -42.5308 },
-    { name: "ETEC de Bom Jesus do Itabapoana", latitude: -21.0900, longitude: -41.7088 },
-    { name: "ETEC de Valença", latitude: -22.2445, longitude: -43.6914 },
-    { name: "ETEC de Cantagalo", latitude: -22.2412, longitude: -42.9627 },
-    { name: "ETEC de Mangaratiba", latitude: -23.0048, longitude: -44.0963 },
-    { name: "ETEC de Paraty", latitude: -23.2190, longitude: -44.7080 },
-    { name: "ETEC de Seropédica", latitude: -22.7495, longitude: -43.6925 },
-    { name: "ETEC de Queimados", latitude: -22.7325, longitude: -43.5664 },
-    { name: "ETEC de Itaboraí", latitude: -22.6795, longitude: -42.8727 },
-    { name: "ETEC de Piraí", latitude: -22.3062, longitude: -43.5917 },
-    { name: "ETEC de São Pedro da Aldeia", latitude: -22.8523, longitude: -42.0295 },
-    { name: "ETEC de São Francisco de Itabapoana", latitude: -21.0167, longitude: -41.0528 },
-    { name: "ETEC de Casimiro de Abreu", latitude: -22.6389, longitude: -42.0826 },
-    { name: "ETEC de Duque de Caxias", latitude: -22.7852, longitude: -43.3093 },
-    { name: "ETEC de Araruama", latitude: -22.8680, longitude: -42.3376 },
-    { name: "ETEC de Magé", latitude: -22.6469, longitude: -43.0675 },
-    { name: "ETEC de Três Rios", latitude: -22.1184, longitude: -43.2166 },
-    { name: "ETEC de Barra do Piraí", latitude: -22.3952, longitude: -43.1995 },
-    { name: "ETEC de Rio Claro", latitude: -22.5154, longitude: -43.1805 },
-    { name: "ETEC de Itatiaia", latitude: -22.4852, longitude: -44.5936 },
-    { name: "ETEC de Quatis", latitude: -22.5100, longitude: -44.0222 },
-    { name: "ETEC de Engenheiro Paulo de Frontin", latitude: -22.5716, longitude: -43.5064 },
-    { name: "ETEC de Mendes", latitude: -22.4820, longitude: -43.6600 },
-    { name: "ETEC de Tanguá", latitude: -22.6702, longitude: -42.8378 },
-    { name: "ETEC de Resende", latitude: -22.4694, longitude: -44.4408 },
-    { name: "ETEC de Cordeiro", latitude: -22.0094, longitude: -42.7994 },
-    { name: "ETEC de São José do Vale do Rio Preto", latitude: -22.2050, longitude: -42.9144 },
-    { name: "ETEC de Natividade", latitude: -21.3724, longitude: -42.0960 },
-    { name: "ETEC de Campos do Jordão", latitude: -22.7414, longitude: -44.8341 },
-    { name: "ETEC de Cardoso Moreira", latitude: -21.4960, longitude: -41.8836 },
-    { name: "ETEC de Santo Antônio de Pádua", latitude: -21.5118, longitude: -42.5484 },
-    { name: "ETEC de Santa Maria Madalena", latitude: -21.4944, longitude: -42.4845 },
-    { name: "ETEC de Itaperuna", latitude: -21.1971, longitude: -42.0248 },
-    { name: "ETEC de Caxias do Sul", latitude: -22.7973, longitude: -43.3180 },
-    { name: "ETEC de São Gonçalo", latitude: -22.8286, longitude: -42.9209 },
-    { name: "ETEC de Copacabana", latitude: -22.9711, longitude: -43.1883 },
-    { name: "ETEC de Laje do Muriaé", latitude: -21.4512, longitude: -42.2870 },
-    { name: "ETEC de Paty do Alferes", latitude: -22.3604, longitude: -43.1872 },
-    { name: "ETEC de Santa Teresa", latitude: -22.9082, longitude: -43.2045 },
-    { name: "ETEC de Mangaratiba", latitude: -23.0048, longitude: -44.0963 },
-    { name: "ETEC de Curitiba", latitude: -25.4284, longitude: -49.2733 },
-    { name: "ETEC de Ponta Grossa", latitude: -25.0910, longitude: -50.1504 },
-    { name: "ETEC de Londrina", latitude: -23.3040, longitude: -51.1695 },
-    { name: "ETEC de Maringá", latitude: -23.4252, longitude: -51.9382 },
-    { name: "ETEC de Cascavel", latitude: -24.9540, longitude: -53.4600 },
-    { name: "ETEC de Foz do Iguaçu", latitude: -25.5461, longitude: -54.5884 },
-    { name: "ETEC de São José dos Pinhais", latitude: -25.5276, longitude: -49.2241 },
-    { name: "ETEC de Guarapuava", latitude: -25.3852, longitude: -51.4622 },
-    { name: "ETEC de Campo Largo", latitude: -25.3925, longitude: -49.5002 },
-    { name: "ETEC de Araucária", latitude: -25.6373, longitude: -49.4191 },
-    { name: "ETEC de União da Vitória", latitude: -26.2000, longitude: -50.2000 },
-    { name: "ETEC de Apucarana", latitude: -23.4128, longitude: -51.4636 },
-    { name: "ETEC de Cianorte", latitude: -23.6634, longitude: -52.5943 },
-    { name: "ETEC de Telêmaco Borba", latitude: -24.3312, longitude: -50.5130 },
-    { name: "ETEC de Francisco Beltrão", latitude: -26.0617, longitude: -53.0604 },
-    { name: "ETEC de Toledo", latitude: -24.7260, longitude: -53.7350 },
-    { name: "ETEC de Marialva", latitude: -23.3936, longitude: -51.8124 },
-    { name: "ETEC de Pato Branco", latitude: -26.2014, longitude: -52.6748 },
-    { name: "ETEC de Campo Mourão", latitude: -24.0450, longitude: -52.3865 },
-    { name: "ETEC de Lapa", latitude: -25.7177, longitude: -49.6986 },
-    { name: "ETEC de São Miguel do Iguaçu", latitude: -25.3106, longitude: -54.5485 },
-    { name: "ETEC de Mandaguari", latitude: -23.4245, longitude: -51.3815 },
-    { name: "ETEC de Paranaguá", latitude: -25.5153, longitude: -48.5216 },
-    { name: "ETEC de Jaguariaíva", latitude: -24.1964, longitude: -49.8657 },
-    { name: "ETEC de Laranjeiras do Sul", latitude: -25.8989, longitude: -52.4353 },
-    { name: "ETEC de Quedas do Iguaçu", latitude: -25.5567, longitude: -52.3536 },
-    { name: "ETEC de Telêmaco Borba", latitude: -24.3312, longitude: -50.5130 },
-    { name: "ETEC de Curiúva", latitude: -24.5890, longitude: -49.7114 },
-    { name: "ETEC de Ipiranga", latitude: -25.2303, longitude: -49.6632 },
-    { name: "ETEC de Arapongas", latitude: -23.4005, longitude: -51.4205 },
-    { name: "ETEC de Rio Negro", latitude: -26.2244, longitude: -50.2904 },
-    { name: "ETEC de Santo Antônio da Platina", latitude: -23.1962, longitude: -49.8384 },
-    { name: "ETEC de Apucarana", latitude: -23.4128, longitude: -51.4636 },
-    { name: "ETEC de Ponta Grossa", latitude: -25.0910, longitude: -50.1504 },
-    { name: "ETEC de Telêmaco Borba", latitude: -24.3312, longitude: -50.5130 },
-    { name: "ETEC de Curitiba", latitude: -25.4284, longitude: -49.2733 },
-    { name: "ETEC de Guarapuava", latitude: -25.3852, longitude: -51.4622 },
-    { name: "ETEC de Maringá", latitude: -23.4252, longitude: -51.9382 },
-    { name: "ETEC de Cascavel", latitude: -24.9540, longitude: -53.4600 },
-    { name: "ETEC de São José dos Pinhais", latitude: -25.5276, longitude: -49.2241 },
-    { name: "ETEC de Londrina", latitude: -23.3040, longitude: -51.1695 },
-    { name: "ETEC de Foz do Iguaçu", latitude: -25.5461, longitude: -54.5884 },
-    { name: "ETEC de Campo Largo", latitude: -25.3925, longitude: -49.5002 },
-    { name: "ETEC de Araucária", latitude: -25.6373, longitude: -49.4191 },
-    { name: "ETEC de União da Vitória", latitude: -26.2000, longitude: -50.2000 },
-    { name: "ETEC de Cianorte", latitude: -23.6634, longitude: -52.5943 },
-    { name: "ETEC de Mandaguari", latitude: -23.4245, longitude: -51.3815 },
-    { name: "ETEC de Ipiranga", latitude: -25.2303, longitude: -49.6632 },
-    { name: "ETEC de Francisco Beltrão", latitude: -26.0617, longitude: -53.0604 },
-    { name: "ETEC de Arapongas", latitude: -23.4005, longitude: -51.4205 },
-    { name: "ETEC de Pato Branco", latitude: -26.2014, longitude: -52.6748 },
-    { name: "ETEC de Campo Mourão", latitude: -24.0450, longitude: -52.3865 },
-    { name: "ETEC de Jaguariaíva", latitude: -24.1964, longitude: -49.8657 },
-    { name: "ETEC de São Miguel do Iguaçu", latitude: -25.3106, longitude: -54.5485 },
-    { name: "ETEC de Paranaguá", latitude: -25.5153, longitude: -48.5216 },
-    { name: "ETEC de Lapa", latitude: -25.7177, longitude: -49.6986 },
-    { name: "ETEC de Telêmaco Borba", latitude: -24.3312, longitude: -50.5130 },
-    { name: "ETEC de Guarapuava", latitude: -25.3852, longitude: -51.4622 },
-    { name: "ETEC de Rio Negro", latitude: -26.2244, longitude: -50.2904 },
-    { name: "ETEC de Curitiba", latitude: -25.4284, longitude: -49.2733 },
-    { name: "ETEC de Ponta Grossa", latitude: -25.0910, longitude: -50.1504 },
-    { name: "ETEC de Londrina", latitude: -23.3040, longitude: -51.1695 },
-    { name: "ETEC de Maringá", latitude: -23.4252, longitude: -51.9382 },
-    { name: "ETEC de Cascavel", latitude: -24.9540, longitude: -53.4600 },
-    { name: "ETEC de Foz do Iguaçu", latitude: -25.5461, longitude: -54.5884 },
-    { name: "ETEC de São José dos Pinhais", latitude: -25.5276, longitude: -49.2241 },
-    { name: "ETEC de Guarapuava", latitude: -25.3852, longitude: -51.4622 },
-    { name: "ETEC de Campo Largo", latitude: -25.3925, longitude: -49.5002 },
-    { name: "ETEC de Araucária", latitude: -25.6373, longitude: -49.4191 },
-    { name: "ETEC de União da Vitória", latitude: -26.2000, longitude: -50.2000 },
-    { name: "ETEC de Cianorte", latitude: -23.6634, longitude: -52.5943 }
-    ];
+        ];
 
 
 

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modo de Alto Contraste</title>
+  <link rel="stylesheet" href="Ajustes_Acessibilidade.css">
+</head>
+<body>
+  <a href="ajustes11.html">
+    <span class="back-button">&larr;</span>
+    </a>
+    <h3>Ajustes de Acessibilidade</h3>
+  <div class="container">
+    <header>
+      
+      
+      
+        <label class="switch">
+          <input type="checkbox" id="contrastToggle" onchange="toggleContrastMode()">
+          <span class="slider round"></span>
+        </label>
+        
+        <p class="status-text">Modo de alto contraste: <strong>desativado</strong></p>
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <h3>Conteúdo de Exemplo</h3>
+        <p>Este é um texto de exemplo para demonstrar o modo de alto contraste. Ative o modo para melhorar a legibilidade.</p>
+        <button>Botão de Exemplo</button>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    function toggleContrastMode() {
+  const isChecked = document.getElementById("contrastToggle").checked;
+  const statusText = document.getElementById("contrastStatus");
+
+  if (isChecked) {
+    document.body.classList.add("high-contrast");
+    statusText.innerHTML = 'Modo de alto contraste: <strong>ativado</strong>';
+  } else {
+    document.body.classList.remove("high-contrast");
+    statusText.innerHTML = 'Modo de alto contraste: <strong>desativado</strong>';
+  }
+}
+
+  </script>
+</body>
+</html>

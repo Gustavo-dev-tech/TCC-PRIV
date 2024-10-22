@@ -1,0 +1,129 @@
+/* Temas */
+body.light-mode  {
+    background-color: #f4f4f4;
+  color: #333;
+}
+
+body.dark-mode {
+    background-color: #333;
+  color: #f4f4f4;
+}
+
+
+.TEMA{
+    font-size: 28px;;
+    background-color: inherit; /* Faz o botão ter a mesma cor de fundo do body */
+    color: none;
+    border: none;
+}
+.MOSTRAR{
+    border: none;
+    background-color: inherit; /* Faz o botão ter a mesma cor de fundo do body */
+    font-size: 26px;
+    align-items: end;
+}
+
+
+/* Tamanho da fonte */
+body.small-font { font-size: 16px; }
+body.medium-font { font-size: 20px; }
+body.large-font { font-size: 25px; }
+
+/* Cor de destaque */
+.highlight {
+    color: var(--highlight-color, red);
+}
+
+ /* Esconder informações */
+ .hidden {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fafafa;
+            color: #000;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .back-button {
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .settings-section {
+            margin-top: 20px;
+        }
+
+        .settings-section h2 {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .settings-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .settings-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .settings-list li:last-child {
+            border-bottom: none;
+        }
+
+        .settings-list li .label {
+            font-size: 16px;
+        }
+
+        .settings-list li .icon {
+            font-size: 20px;
+            color: #666;
+        }
+
+        /* Scroll style */
+        .settings-list {
+            max-height: 500px;
+            overflow-y: auto;
+        }

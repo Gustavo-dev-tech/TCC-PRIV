@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajustes do Aplicativo</title>
+    <link rel="stylesheet" href="ajustes.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+
+        <a href="etecs.html">
+        <span class="back-button">&larr;</span>
+        </a>
+        <h1>Ajustes</h1>
+        <span></span>
+    </div>
+
+                <div class="settings-section">
+                    <h2>Como usar o DoeLab</h2>
+                        <ul class="settings-list">
+                            
+                            <li>
+                                <label for="theme-toggle">Tema:</label>
+                                <div class="TEMA">
+                                <button id="theme-toggle" class="TEMA">
+                                <span id="themeEmoji" class="emoji">☀️</span>
+                                </button>
+                                </div>
+                            </li>
+                            
+                                <li>
+                                    <label>Pesquisa por voz </label>
+                                    <span class="icon">&gt;</span>
+                                </li>
+                                    <li>
+                                        <label for="font-size">Tamanho da fonte</label>
+                                        <select id="font-size">
+                                            <option value="small-font">Pequeno</option>
+                                            <option value="medium-font" selected>Médio</option>
+                                            <option value="large-font">Grande</option>
+                                        </select>
+                                    </li>
+                                        <li>
+                                            <label for="">Ativar alto contraste</label>
+                                            <a href="Ajustes_Acessibilidade.html">
+                                            <span class="icon">&gt;</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                    <div>
+                                            <label for="toggle-info">Mostrar Informações:</label>
+                                            <button id="toggle-info" class="MOSTRAR">👁️</button>
+                        <div id="info" class="hidden">
+                                            <p>Aqui estão algumas informações úteis sobre o uso do aplicativo...</p>
+                        </div>
+                    </div>
+                                        </li>
+                                        <li>
+                                            <label>Sair do DoeLab</label>
+                                            <a href="Tela inicial.html">
+                                            <span class="icon">&gt;</span>
+                                            </a>
+                                        </li>
+                        </ul>
+                </div>
+</div>
+    <script>
+        // Alternar tema
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeEmoji = document.getElementById('themeEmoji');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            if (document.body.classList.contains('dark-mode')) {
+    themeEmoji.textContent = '🌙'; // Emoji da lua
+  } else {
+    themeEmoji.textContent = '☀️'; // Emoji do sol
+  }
+});
+
+        // Alterar tamanho da fonte
+        const fontSizeSelector = document.getElementById('font-size');
+        fontSizeSelector.addEventListener('change', (event) => {
+            document.body.classList.remove('small-font', 'medium-font', 'large-font');
+            document.body.classList.add(event.target.value);
+        });
+
+         // Mostrar Esconder informações
+         const toggleInfoButton = document.getElementById('toggle-info');
+        const infoSection = document.getElementById('info');
+        toggleInfoButton.addEventListener('click', () => {
+            infoSection.classList.toggle('hidden');
+        });
+        </script>
+
+</body>
+</html>
