@@ -1,0 +1,105 @@
+[
+    {
+        "name": "ETEC Polivalente de Americana",
+        "latitude": -22.735105637462283, 
+        "longitude": -47.31459478727817
+    },
+    {
+        "name": "ETEC João Belarmino",
+        "latitude": -22.705617351907293,
+        "longitude": -46.76495686931041
+    },
+    {
+        "name": "ETEC de Arthur Nogueira",
+        "latitude": -22.561806469590504,
+        "longitude": -47.16288204603438
+    },
+     {
+        "name": "ETEC Trajano Camargo",
+        "latitude": -23.6980,
+        "longitude": -46.5652
+    },
+    {
+        "name": "ETEC Bento Quirino Extensão EE Hercy Moraes",
+        "latitude": -22.92700847255418,
+        "longitude": -47.11349391981387
+    },
+    {
+        "name": "ETEC Bento Quirino",
+        "latitude": -22.88793299688249,
+        "longitude": -47.046732462142984
+    },
+    {
+        "name": "ETEC Conselheiro Antônio Prado",
+        "latitude": -22.863244456105274,
+        "longitude": -47.101615755057644
+    },
+    {
+        "name": "FATEC Brangaça Paulista",
+        "latitude": -22.894501612487737,
+        "longitude": -46.549034232038615
+    },
+    {
+        "name": "ETEC de Hortolândia",
+        "latitude": -22.872140239665345,
+        "longitude": -47.2101139378577
+    },
+    {
+        "name": "FATEC Indaiatuba",
+        "latitude": -23.079486557002966,
+        "longitude": -47.20258479811797
+    },
+    {
+        "name": "ETEC Rosa Perrone Scavone",
+        "latitude": -23.007801240442593,
+        "longitude": -46.84638391841022
+    },
+    
+    {
+            "name": "ETEC Vasco Antônio Venchiarutti",
+            "latitude": -23.23023461298903,
+            "longitude": -46.87480938915149
+    },
+    {
+        "name": "ETEC Benedito Storani",
+        "latitude": -23.181956125967098,
+        "longitude": -46.94416058634573
+},
+{
+        "name": "ETEC Campo Limpo Paulista",
+        "latitude": -23.228026174051692,
+        "longitude": -46.76837933517612
+},
+   
+    {
+            "name": "ETEC Euro Albino de Souza",
+            "latitude": -22.34416451414413,
+            "longitude": -46.93061606216327
+    },
+    {
+            "name": "ETEC de Paulínia",
+            "latitude": -22.79573680780621, 
+            "longitude": -47.11907567007766
+    },
+    {
+            "name": "ETEC Deputado Ary de Camargo Pedroso",
+            "latitude": -22.73401918990181,
+            "longitude": -47.658755779032774
+    },
+    {
+        "name": "ETEC Coronel Fernando Febeliano da Costa",
+        "latitude": -22.717815220429152, 
+        "longitude": -47.64856614579916
+    },
+    {
+            "name": "ETEC Professor Doutor José Dagnoni",
+            "latitude": -22.73227588354393, 
+            "longitude": -47.38161158800669
+    },
+    {
+            "name": "ETEC de Sumaré",
+            "latitude": -22.814462832270603, 
+            "longitude": -47.25084381796481
+    }
+    
+   ]

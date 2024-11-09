@@ -8,73 +8,10 @@
     <style>
         body { margin: 0; padding: 0; }
         #map { height: 100vh; }
-
-.search-bar {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1000; /* Para garantir que o input fique sobre o mapa */
-    display: flex;
-    align-items: center;
-    background-color: #A9E08F; /* Cor de fundo verde */
-    border-radius: 50px;
-    padding: 0.5px;
-    box-shadow: 10px; /* Remove sombra */
-    border: none; /* Remove borda */
-    outline: none; /* Remove outline */
-}
-
-.search-bar input {
-    border: 10px;
-    outline: none;
-    background: none;
-    flex-grow: 1;
-    font-size: 16px; /* Tamanho da fonte */
-    color: white; /* Cor do texto do input */
-    padding: 1px; /* Adiciona padding para aumentar o tamanho do input */
-    height: 40px; /* Ajusta a altura do input */
-    min-width: 300px; /* Define uma largura mínima para o input */
-}
-
-/* Cor da placeholder */
-.search-bar input::placeholder {
-    color: white; /* Muda a cor da placeholder para branco */
-    opacity: 1; /* Define a opacidade para 1 */
-}
-
-.search-bar button {
-    background: none;
-    border: 10px;
-    cursor: pointer;
-    color: white; /* Cor do texto do botão (se houver texto) */
-}
-
-.search-bar button img {
-    width: 20px;
-    height: 20px;
-}
-
-.Logo{
-    width: 20px; /* Altere para o tamanho desejado */
-    height: auto; /* Mantém a proporção da imagem */
-    display: block;
-    margin: 10px; /* Centraliza a logo horizontalmente, se necessário */
-}
-
-
     </style>
 </head>
 <body>
-    <div class="search-bar">
-        <img src="https://s10.aconvert.com/convert/p3r68-cdx67/avhax-xe3ov.jpg" alt="Logo Presente Dourado" class="Logo">
-        <input id="search-input" type="text"   placeholder="Pesquise pela Etec mais próxima">
-       
 
-        <button onclick="searchEtec()">
-            <img src="https://img.icons8.com/ios-filled/50/ffffff/search.png" alt="Search Icon">
-        </button>
-    </div>
     <div id="map"></div>
 
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.js"></script>
@@ -86,11 +23,31 @@
             center: [-47.9292, -15.7801], // Centro do Brasil
             zoom: 4
         });
-
+        
         // Dados das ETECs
         const etecs = [
-    { name: "ETEC de São Paulo", latitude: -23.5505, longitude: -46.6333 },
-        ];
+    { name: "ETEC Polivalente de Americana", latitude: -22.735105637462283, longitude:  -47.31459478727817 },
+    { name: "ETEC João Belarmino", latitude: -22.705617351907293, longitude: -46.76495686931041 },
+    { name: "ETEC de Arthur Nogueira", latitude: -23.5505, longitude: -46.6333 },
+    { name: "ETEC Trajano Camargo", latitude: -22.561806469590504,  longitude: -47.16288204603438 },
+    { name: "ETEC Bento Quirino Extensão EE Hercy Moraes", latitude: -22.92700847255418,  longitude: -47.11349391981387 },
+    { name: "ETEC Bento Quirino", latitude: -22.88793299688249,  longitude: -47.046732462142984 },
+    { name: "ETEC Conselheiro Antônio Prado", latitude: -22.863244456105274,  longitude: -47.101615755057644 },
+    { name: "FATEC Bragança Paulista", latitude: -22.894501612487737,   longitude: -46.549034232038615},
+    { name: "ETEC de Hortolândia", latitude: -22.872140239665345,  longitude: -47.2101139378577 },
+    { name: "FATEC Indaiatuba ", latitude: -23.079486557002966, longitude: -47.20258479811797 },
+    { name: "ETEC Rosa Perrone Scavone", latitude: -23.007801240442593, longitude: -46.84638391841022 },
+    { name: "ETEC Vasco Antônio Venchiarutti", latitude: -23.23023461298903, longitude: -46.87480938915149 },
+    { name: "ETEC Benedito Storani", latitude: -23.181956125967098, longitude: -46.94416058634573 },
+    { name: "ETEC Campo Limpo Paulista", latitude: -23.228026174051692,  longitude: -46.76837933517612 },
+    { name: "ETEC Euro Albino de Souza", latitude: -22.34416451414413, longitude: -46.93061606216327 },
+    { name: "ETEC de Paulínia", latitude: -22.79573680780621, longitude: -47.11907567007766 },
+    { name: "ETEC Deputado Ary de Camargo Pedroso", latitude: -22.73401918990181, longitude: -47.658755779032774 },
+    { name: "ETEC Deputado Ary de Camargo Pedroso", latitude: -22.717815220429152, longitude: -47.64856614579916},
+    { name: "ETEC Professor Doutor José Dagnoni", latitude: -22.73227588354393, longitude: -47.38161158800669 },
+    { name: "ETEC Sumaré", latitude: -22.814462832270603, longitude: -47.25084381796481 }
+   
+];
 
 
 
