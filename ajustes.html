@@ -1,0 +1,122 @@
+<!DOCTYPE html> 
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Ajustes do Aplicativo</title> 
+    <link rel="stylesheet" href="ajustes.css">
+</head>
+<body>
+
+    <!-- Contêiner principal -->
+    <div class="container">
+        
+        <!-- Seção de configurações -->
+        <div class="settings-section">
+            
+            <!-- Lista de configurações -->
+            <ul class="settings-list">
+                
+                <!-- Link para a página "etecs.html" com ícone SVG para voltar -->
+                <a class="theme-toggle" href="etecs.html">
+                    <svg class="button"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" /> <!-- Desenha uma seta para voltar --></svg>
+                    <br>
+                </a>
+                
+                <h2>Como usar o DoeLab</h2> <!-- Título explicativo sobre o uso do aplicativo -->
+                
+                <!-- Cabeçalho da seção -->
+                <div class="header">
+                    <h1>Ajustes</h1> <!-- Título principal da seção de ajustes -->
+                </div>
+                
+                <!-- Opção de alternar tema -->
+                <li>
+                    <label for="theme-toggle">Tema:</label> <!-- Rótulo para o botão de tema -->
+                    <div class="TEMA">
+                        <button id="theme-toggle" class="TEMA">
+                            <span id="themeEmoji" class="emoji">☀️</span> <!-- Emoji que representa o tema atual -->
+                        </button>
+                    </div>
+                </li>
+                
+                <!-- Opção de pesquisa por voz -->
+                <li>
+                    <label>Pesquisa por voz </label> <!-- Rótulo para a opção de pesquisa por voz -->
+                    <span class="icon">&gt;</span> <!-- Ícone de seta para indicar interação -->
+                </li>
+                
+                <!-- Opção de selecionar o tamanho da fonte -->
+                <li>
+                    <label for="font-size">Tamanho da fonte</label> <!-- Rótulo para o seletor de tamanho da fonte -->
+                    <select id="font-size">
+                        <option value="small-font">Pequeno</option> <!-- Opção de fonte pequena -->
+                        <option value="medium-font" selected>Médio</option> <!-- Opção de fonte média selecionada -->
+                        <option value="large-font">Grande</option> <!-- Opção de fonte grande -->
+                    </select>
+                </li>
+                
+                <!-- Link para a página de acessibilidade -->
+                <li>
+                    <label for="">Acessibilidade</label> <!-- Rótulo para o link de acessibilidade -->
+                    <a href="Acessibilidades.html">
+                        <span class="icon">&gt;</span> <!-- Ícone de seta para indicar interação -->
+                    </a>
+                </li>
+                
+                <!-- Opção de mostrar ou esconder informações -->
+                <li>
+                    <div>
+                        <label for="toggle-info">Mostrar Informações:</label> <!-- Rótulo para o botão de informações -->
+                        <button id="toggle-info" class="MOSTRAR">👁️</button> <!-- Botão para alternar a visualização das informações -->
+                        <div id="info" class="hidden"> <!-- Div com informações adicionais, inicialmente escondida -->
+                            <p>Aqui estão algumas informações úteis sobre o uso do aplicativo...</p> <!-- Texto explicativo sobre o aplicativo -->
+                        </div>
+                    </div>
+                </li>
+                
+                <!-- Link para sair do aplicativo -->
+                <li>
+                    <label>Sair do DoeLab</label> <!-- Rótulo para o link de saída -->
+                    <a href="Tela inicial.html">
+                        <span class="icon">&gt;</span> <!-- Ícone de seta para indicar interação -->
+                    </a>
+                </li>
+                
+            </ul>
+            
+        </div> 
+        
+    </div>
+
+    <script>
+        // Alternar tema entre claro e escuro
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeEmoji = document.getElementById('themeEmoji');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode'); // Alterna a classe 'dark-mode' no corpo do documento
+            if (document.body.classList.contains('dark-mode')) {
+                themeEmoji.textContent = '🌙'; // Define o emoji da lua para o tema escuro
+            } else {
+                themeEmoji.textContent = '☀️'; // Define o emoji do sol para o tema claro
+            }
+        });
+
+        // Alterar tamanho da fonte baseado na seleção
+        const fontSizeSelector = document.getElementById('font-size');
+        fontSizeSelector.addEventListener('change', (event) => {
+            document.body.classList.remove('small-font', 'medium-font', 'large-font'); // Remove classes de tamanho de fonte
+            document.body.classList.add(event.target.value); // Adiciona a classe correspondente ao valor selecionado
+        });
+
+        // Mostrar ou esconder informações adicionais
+        const toggleInfoButton = document.getElementById('toggle-info');
+        const infoSection = document.getElementById('info');
+        toggleInfoButton.addEventListener('click', () => {
+            infoSection.classList.toggle('hidden'); // Alterna a visibilidade da seção de informações
+        });
+    </script>
+
+</body>
+</html>

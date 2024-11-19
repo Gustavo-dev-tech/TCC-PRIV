@@ -1,0 +1,153 @@
+/* Navegação fixa na parte inferior */
+.navigation {
+position: fixed; /* Fixa a navegação */
+bottom: 0; /* Posiciona a barra na parte inferior */
+width: 100%; /* Largura total */
+background-color: white;
+display: flex;
+
+z-index: 9999; /* Para garantir que fique sobre o mapa */
+}
+
+/* Ajuste do item da lista  */
+ul {
+display: inline-flex;
+width: 80%; /* DISTACIA DOS ICONESSSSS */ 
+max-width: 110%; /* Tamanho máximo para a lista */
+
+}
+
+li {
+list-style-type: none;
+width: 100%;
+height: 35px; /*DEFINE O TAMANHO DA BARRA BRANCA INFERIOR */
+position: relative;
+
+}
+
+li a {
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+text-align: center;
+font-size: 0px;
+
+}
+a {
+    text-decoration: none; /* TIRAR SUBLINHADO DOS LINKS*/
+  }
+a .ICONE {
+    width: 26px; /* ou defina uma largura específica, caso necessário */
+    height: 20px; /* ou 18px, se desejar um pouco maior */
+    display: flex;
+    justify-content: center;
+    color: black;
+    margin-bottom: -5px; /* Espaço entre a imagem e o texto */
+
+}
+
+a .text { /*Meche com o texto de cada icone */
+
+justify-content: center;
+font-size: 12px;
+font-family: Arial, Helvetica, sans-serif;
+background-color: transparent;
+color: black;
+}
+/*
+li.active a.text {
+opacity: 1;
+transform: translateX(0);
+}
+*/
+
+/* Selecionador
+.indicator {
+position: absolute;
+top: -50%;
+width: 70px;
+height: 70px;
+background-color: tomato;
+border-radius: 50%;
+border: 6px solid #222327;
+transition: 0.5s;
+
+}*/
+
+/* Ajuste da animação do indicador */
+/* 
+li.active ~ .indicator {
+transform: translateX(var(--x));
+}
+
+
+li:nth-child(2).active ~ .indicator {
+--x: 70px;
+}
+
+li:nth-child(3).active ~ .indicator {
+--x: 140px;
+}
+
+li:nth-child(4).active ~ .indicator {
+--x: 210px;
+}
+
+li:nth-child(5).active ~ .indicator {
+--x: 280px;
+}
+
+
+/* Seletores  ACIMA*/
+
+/* BARA DE PESQUISA ABAIXO */
+
+ body { margin: 0; padding: 0; }
+ #map { height: 100vh; }
+ 
+ .search-bar {
+     position: absolute;
+     top: 30px;
+     left: 50%;
+     transform: translateX(-50%);
+     z-index: 1000; /* Para garantir que o input fique sobre o mapa */
+     display: flex;
+     align-items: center;
+     background-color: #A9E08F; /* Cor de fundo verde */
+     border-radius: 13px; /* Arredonda o Search*/
+     padding: 1px;
+     box-shadow: 10px; /* Remove sombra */
+     border: none; /* Remove borda */
+     outline: none; /* Remove outline */
+}
+
+.search-bar input {
+ border: 10px;
+ outline: none;
+ background: none;
+ flex-grow: 1;
+ font-size: 16px; /* Tamanho da fonte */
+ color: white; /* Cor do texto do input */
+ padding: 1px; /* Adiciona padding para aumentar o tamanho do input */
+ height: 40px; /* Ajusta a altura do input */
+ min-width: 310px; /* Define uma largura mínima para o input */
+}
+
+/* Cor da placeholder */
+.search-bar input::placeholder {
+ color: white; /* Muda a cor da placeholder para branco */
+
+ 
+}
+
+.search-bar button {
+ background: none;
+ border: 1px;
+ 
+}
+
+.search-bar button img {
+ width: 20px;
+ height: 20px;
+}

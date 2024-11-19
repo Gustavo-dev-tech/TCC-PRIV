@@ -1,129 +1,123 @@
 /* Temas */
 body.light-mode  {
-    background-color: #f4f4f4;
-  color: #333;
+    background-color: #f4f4f4; /* Define a cor de fundo para o tema claro */
+    color: #333; /* Define a cor do texto para o tema claro */
 }
 
 body.dark-mode {
-    background-color: #333;
-  color: #f4f4f4;
+    background-color: #333; /* Define a cor de fundo para o tema escuro */
+    color: #f4f4f4; /* Define a cor do texto para o tema escuro */
 }
 
+a {
+    text-decoration: none; /* Remove o sublinhado dos links */
+}
 
-.TEMA{
-    font-size: 28px;;
+.TEMA {
+    font-size: 28px; /* Define o tamanho da fonte para o botão de tema */
     background-color: inherit; /* Faz o botão ter a mesma cor de fundo do body */
-    color: none;
-    border: none;
-}
-.MOSTRAR{
-    border: none;
-    background-color: inherit; /* Faz o botão ter a mesma cor de fundo do body */
-    font-size: 26px;
-    align-items: end;
+    border: none; /* Remove a borda do botão */
+    align-items: end; /* Alinha o botão ao final */
 }
 
+.MOSTRAR {
+    border: none; /* Remove a borda do botão de exibição */
+    background-color: inherit; /* Faz o botão ter a mesma cor de fundo do body */
+    font-size: 28px; /* Define o tamanho da fonte para o botão de exibição */
+    align-items: end; /* Alinha o botão ao final */
+}
+
+.button {
+    max-width: 25px; /* Define a largura máxima do botão */
+    color:#4CAF50; /* Define a cor herdada para o botão */
+    align-items: center; /* Alinha o conteúdo ao centro */
+    display: flex; /* Define o layout flexível para o botão */
+}
 
 /* Tamanho da fonte */
-body.small-font { font-size: 16px; }
-body.medium-font { font-size: 20px; }
-body.large-font { font-size: 25px; }
+body.small-font {  font-size: 16px;/* Define a fonte pequena */ }
+body.medium-font {  font-size: 20px;/* Define a fonte média */ }
+body.large-font {  font-size: 25px;/* Define a fonte grande */ }
 
-/* Cor de destaque */
-.highlight {
-    color: var(--highlight-color, red);
+
+
+/* Esconder informações */
+.hidden {
+    display: none; /* Esconde elementos com esta classe */
 }
-
- /* Esconder informações */
- .hidden {
-    display: none;
-}
-
-
-
-
-
-
-
-
-
-
-
 
 * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    margin: 0; /* Remove a margem de todos os elementos */
+    padding: 0; /* Remove o preenchimento de todos os elementos */
+    box-sizing: border-box; /* Define o box-sizing para borda incluída */
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #fafafa;
-            color: #000;
-        }
+body {
+    font-family: Arial, sans-serif; /* Define a fonte principal do corpo do documento */
+    background-color: #fafafa; /* Define a cor de fundo padrão */
+}
 
-        .container {
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+.container {
+    max-width: 400px; /* Define a largura máxima do container */
+    margin: 0 auto; /* Centraliza o container horizontalmente */
+    padding: 20px; /* Adiciona espaço interno ao container */
+}
 
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-        }
+.header {
+    display: flex; /* Define o layout flexível para o cabeçalho */
+    justify-content: space-between; /* Espaça os itens ao longo do eixo principal */
+    align-items: center; /* Alinha os itens ao centro do eixo cruzado */
+    padding: 10px 0; /* Adiciona espaçamento vertical no cabeçalho */
+}
 
-        .header h1 {
-            font-size: 24px;
-            font-weight: bold;
-        }
+.header h1 {
+    font-size: 24px; /* Define o tamanho da fonte para o título principal */
+    font-weight: bold; /* Define a fonte em negrito */
+}
 
-        .back-button {
-            font-size: 20px;
-            cursor: pointer;
-        }
+.settings-section {
+    margin-top: 20px; /* Adiciona margem superior para a seção de configurações */
+}
 
-        .settings-section {
-            margin-top: 20px;
-        }
+.header h2 {
+    font-size: 16px; /* Define o tamanho da fonte para o subtítulo */
+    margin-bottom: 10px; /* Adiciona margem inferior ao subtítulo */
+}
 
-        .settings-section h2 {
-            font-size: 16px;
-            color: #666;
-            margin-bottom: 10px;
-        }
+.header a {
+    max-width: 20px; /* Define a largura máxima para os links no cabeçalho */
+    color: red; /* Herda a cor dos links */
+}
 
-        .settings-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
+.settings-list {
+    list-style: none; /* Remove os marcadores de lista */
+    padding: 0; /* Remove o preenchimento da lista */
+    margin: 0; /* Remove a margem da lista */
+}
 
-        .settings-list li {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-            border-bottom: 1px solid #ddd;
-        }
+.settings-list li {
+    display: flex; /* Define o layout flexível para os itens da lista */
+    justify-content: space-between; /* Espaça os itens ao longo do eixo principal */
+    align-items: center; /* Alinha os itens ao centro do eixo cruzado */
+    padding: 15px 0; /* Adiciona espaçamento vertical aos itens da lista */
+    border-bottom: 1px solid #ddd; /* Adiciona uma borda inferior para separar os itens */
+}
 
-        .settings-list li:last-child {
-            border-bottom: none;
-        }
+.settings-list li:last-child {
+    border-bottom: none; /* Remove a borda inferior do último item da lista */
+}
 
-        .settings-list li .label {
-            font-size: 16px;
-        }
+.settings-list li .label {
+    font-size: 16px; /* Define o tamanho da fonte para o rótulo dos itens da lista */
+}
 
-        .settings-list li .icon {
-            font-size: 20px;
-            color: #666;
-        }
+.settings-list li .icon {
+    font-size: 20px; /* Define o tamanho da fonte para o ícone */
+    color: #666; /* Define a cor do ícone */
+}
 
-        /* Scroll style */
-        .settings-list {
-            max-height: 500px;
-            overflow-y: auto;
-        }
+/* Estilo de rolagem */
+.settings-list {
+    max-height: 700px; /* Define a altura máxima para o conteúdo da lista */
+    overflow-y: auto; /* Adiciona rolagem vertical quando necessário */
+}
