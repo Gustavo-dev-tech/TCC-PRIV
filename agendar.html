@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendário de Doações</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/css/pikaday.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            
+            padding: 0;
+            background-color: #f5f5f5;
+            width: 105%;
+            height: 1200px;
+        }
+
+        #calendar-container {
+            width: 90%;
+            padding: 10px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            height: 80%;
+        }
+
+        input, select {
+            width: 95%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            width: 95%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div id="calendar-container">
+        <h2>Agendar Doação</h2>
+        <label for="datepicker">Escolha uma data:</label>
+        <input type="text" id="datepicker" placeholder="Selecione uma data" />
+        
+        <label for="etec">Escolha a ETEC:</label>
+        <select id="etec">
+            <option value="">Selecione uma ETEC</option>
+            <option value="ETEC Hortolândia">ETEC Hortolândia</option>
+            <option value="ETEC Sumaré">ETEC Sumaré</option>
+            <option value="ETEC Campinas">ETEC Campinas</option>
+            <option value="ETEC Piracicaba">ETEC Piracicaba</option>
+        </select>
+
+        <button id="submitBtn">Confirmar Agendamento</button>
+        <p id="message"></p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/pikaday.min.js"></script>
+    <script>
+        // Lista de feriados (adicione os feriados que desejar)
+        const feriados = [
+            '2024-01-01', '2024-02-12', '2024-04-21', '2024-05-01', '2024-09-07', '2024-10-12', '2024-11-02', '2024-11-15', '2024-12-25'
+        ];
+
+        // Função para verificar se a data é um final de semana ou feriado
+        function isWeekendOrHoliday(date) {
+            const day = date.getDay(); // 0 - Domingo, 6 - Sábado
+            const dateString = moment(date).format('YYYY-MM-DD');
+            return day === 0 || day === 6 || feriados.includes(dateString);
+        }
+
+        // Inicializa o Pikaday
+        var picker = new Pikaday({
+            field: document.getElementById('datepicker'),
+            format: 'DD/MM/YYYY',
+            minDate: new Date(),
+            onSelect: function() {
+                const selectedDate = picker.getDate();
+                const messageElement = document.getElementById('message');
+
+                if (isWeekendOrHoliday(selectedDate)) {
+                    messageElement.textContent = 'A data selecionada é um final de semana ou feriado. Escolha outra data.';
+                    messageElement.style.color = 'red';
+                } else {
+                    messageElement.textContent = `Doação agendada para: ${moment(selectedDate).format('DD/MM/YYYY')}`;
+                    messageElement.style.color = 'green';
+                }
+            }
+        });
+
+        // Evento de clique no botão de envio
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            const selectedDate = picker.getDate();
+            const selectedEtec = document.getElementById('etec').value;
+            const messageElement = document.getElementById('message');
+
+            if (isWeekendOrHoliday(selectedDate)) {
+                messageElement.textContent = 'A data selecionada é um final de semana ou feriado. Escolha outra data.';
+                messageElement.style.color = 'red';
+            } else if (!selectedEtec) {
+                messageElement.textContent = 'Por favor, selecione uma ETEC.';
+                messageElement.style.color = 'red';
+            } else {
+                // Enviar os dados (aqui você pode enviar para outro arquivo ou processar de outra forma)
+                messageElement.textContent = `Agendamento confirmado para: ${moment(selectedDate).format('DD/MM/YYYY')} na ${selectedEtec}.`;
+                messageElement.style.color = 'green';
+
+                // Simulação do envio dos dados
+                // Aqui você pode enviar os dados via AJAX ou formulário
+                const formData = new FormData();
+                formData.append('data', moment(selectedDate).format('YYYY-MM-DD'));
+                formData.append('etec', selectedEtec);
+
+                // Exemplo de envio usando Fetch (assumindo que um backend esteja preparado)
+                fetch('processar_agendamento.php', {
+                    method: 'POST',
+                    body: formData
+                }).then(response => response.json())
+                  .then(data => {
+                      console.log('Resposta do servidor:', data);
+                  })
+                  .catch(error => {
+                      console.error('Erro ao enviar dados:', error);
+                  });
+            }
+        });
+    </script>
+</body>
+</html>

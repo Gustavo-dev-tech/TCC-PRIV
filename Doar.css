@@ -1,0 +1,111 @@
+.container {
+    max-width: 400%; /* Define a largura máxima do container */
+    max-height: 100%;
+    padding: 7px; /* Adiciona espaço interno ao container */
+}
+
+body {
+    font-family: Arial, sans-serif; /* Define a fonte padrão para o corpo */
+    margin: 0; /* Remove a margem padrão do corpo */
+    padding: 0; /* Remove o preenchimento padrão do corpo */
+    background-color: #f4f4f4; /* Define a cor de fundo do corpo */
+    justify-content: center; /* Alinha horizontalmente o conteúdo */
+    align-items: center; /* Alinha verticalmente o conteúdo */
+}
+
+header {
+    background-color: #4CAF50; /* Define a cor de fundo do cabeçalho */
+    color: white; /* Define a cor do texto como branco */
+    font-size: 16px; /* Define o tamanho da fonte no cabeçalho */
+    font-family: Arial, Helvetica, sans-serif; /* Define a fonte do cabeçalho */
+    padding: 1%; /* Adiciona um preenchimento de 1% ao redor do cabeçalho */
+    justify-content: center; /* Alinha horizontalmente o conteúdo */
+    align-items: center; /* Alinha verticalmente o conteúdo */
+}
+
+.month-navigation {
+    display: flex; /* Usa o layout flexbox para organizar os elementos em linha */
+    gap: 8px; /* Adiciona um espaço de 10px entre os itens */
+    justify-content: center; /* Alinha horizontalmente o conteúdo */
+    align-items: center; /* Alinha verticalmente o conteúdo */
+    margin: 20px 0; /* Adiciona uma margem de 20px acima e abaixo */
+}
+
+.month-navigation button {
+    background-color: #4CAF50; /* Define a cor de fundo do botão */
+    color: white; /* Define a cor do texto como branco */
+    border: none; /* Remove a borda padrão do botão */
+    border-radius: 5px; /* Arredonda as bordas do botão */
+    justify-content: center; /* Alinha horizontalmente o conteúdo */
+    align-items: center; /* Alinha verticalmente o conteúdo */
+    padding: 8px 12px; /* Adiciona 8px de preenchimento vertical e 12px horizontal */
+    font-size: 14px; /* Define o tamanho da fonte do texto */
+    font-weight: bold; /* Deixa o texto em negrito */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Efeitos de transição para a cor e transformações */
+}
+
+.month-navigation button:hover {
+    background-color: #45a049; /* Muda a cor de fundo ao passar o mouse */
+    transform: scale(1.05); /* Aumenta um pouco o tamanho ao passar o mouse */
+}
+
+.month-navigation button:active {
+    background-color: #3e8e41; /* Muda a cor de fundo ao clicar */
+    transform: scale(0.95); /* Diminui um pouco o tamanho ao clicar */
+}
+
+.month-navigation span {
+    font-size: 16px; /* Define o tamanho da fonte do nome do mês */
+    font-weight: bold; /* Deixa o texto do nome do mês em negrito */
+    color: #4CAF50; /* Define a cor do nome do mês */
+}
+
+.calendar-container {
+    max-width: 180%; /* Limita a largura para 100% */
+    margin: 1rem auto; /* Centraliza o container com 1rem de margem vertical */
+    padding: 1rem; /* Adiciona 1rem de preenchimento */
+    background: white; /* Define o fundo do calendário como branco */
+    border-radius: 8px; /* Borda arredondada */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave ao redor do calendário */
+    display: grid; /* Usa grid layout */
+    grid-template-columns: repeat(7, 1fr); /* Divide em 7 colunas, uma para cada dia da semana */
+    gap: 7px; /* Espaçamento entre cada dia */
+}
+
+.day {
+    display: flex; /* Usa flexbox para centrar o conteúdo dentro de cada célula */
+    justify-content: center; /* Alinha horizontalmente o conteúdo */
+    align-items: center; /* Alinha verticalmente o conteúdo */
+    background-color: #e9e9e9; /* Cor de fundo suave para os dias */
+    border-radius: 4px; /* Bordas arredondadas */
+    padding: 8px; /* Espaçamento interno de 8px */
+    font-size: 12px; /* Tamanho da fonte */
+}
+
+
+.day-header {
+    font-weight: bold; /* Deixa o texto dos cabeçalhos em negrito */
+    background-color: #4CAF50; /* Cor de fundo verde para os cabeçalhos */
+    color: white; /* Cor do texto dos cabeçalhos */
+    justify-content: center; /* Alinha horizontalmente o conteúdo */
+    
+}
+
+.weekend {
+    background-color: #ffe6e6; /* Fundo vermelho claro para fins de semana */
+    color: #ff0000; /* Texto vermelho para fins de semana */
+}
+
+.holiday {
+    background-color: #ffcccc; /* Fundo vermelho claro para feriados */
+    color: #b30000; /* Texto vermelho escuro */
+    border: 1px solid #ff0000; /* Borda vermelha ao redor dos feriados */
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.5); /* Sombra mais intensa para destacar feriados */
+}
+
+.today {
+    background-color: #16C7E0; /* Cor verde para o dia atual */
+    color: white; /* Texto branco para o dia atual */
+    font-weight: bold; /* Texto em negrito para o dia atual */
+    box-shadow: 0 4px 10px rgba(155, 77, 255, 0.5); /* Sombra verde suave ao redor do dia atual */
+}

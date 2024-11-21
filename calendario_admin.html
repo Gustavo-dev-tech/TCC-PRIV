@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendário de Agendamentos - Administração</title>
+    <link rel="stylesheet" href="styles.css">  <!-- Estilos CSS para o calendário -->
+</head>
+<body>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: green;
+    }
+    
+    h1 {
+        text-align: center;
+        margin: 20px 0;
+        color: white;
+    }
+    
+    .calendario {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        padding: 20px;
+    }
+    
+    .agendamento {
+        background-color: #fff;
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        width: 200px;
+        text-align: center;
+    }
+    
+    .data-agendamento {
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    
+    .etec-agendada {
+        color: #333;
+        margin-bottom: 10px;
+    }
+    
+    .usuario-agendamento {
+        font-size: 12px;
+        color: #777;
+    }
+    </style>
+    <h1>Calendário de Agendamentos</h1>
+    <div id="calendario-adm" class="calendario">
+        <!-- Os agendamentos serão carregados aqui -->
+    </div>
+
+    <script src="agendamento.js"></script>  <!-- Arquivo JavaScript renomeado para agendamento.js -->
+</body>
+</html>

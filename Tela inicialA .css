@@ -39,16 +39,7 @@ img{
     height: auto;      /* Mantém a proporção da imagem */
     margin-bottom: -25px; /* Espaçamento entre imagem e formulário */
 }
-.insirir{
-    font-family: Roboto;
-    font-size: 1em;
-    font-weight: bold;
-    margin-bottom: 15px;
-    border: 1px solid rgb(0, 0, 0);
-    border-radius: 22px; /* para bordas arredondadas */
-    padding: 10px; /* Espaçamento interno */
-    width: 100%; /* Largura do input (ajustável) */
-}
+
 .enviar{
     color: rgb(255, 255, 255);
     background-color:#A9E08F;
@@ -63,6 +54,13 @@ img{
     width: 95%; /* Largura do input (ajustável) */
 
 }
+.enviar:hover {
+    background-color: #45a049; /* Muda a cor de fundo ao passar o mouse */
+    transform: scale(1.05); /* Aumenta um pouco o tamanho ao passar o mouse */
+}
+
 .enviar:active {
+    background-color: #3e8e41; /* Muda a cor de fundo ao clicar */
+    transform: scale(0.95); /* Diminui um pouco o tamanho ao clicar */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Sombra projetada */
 }

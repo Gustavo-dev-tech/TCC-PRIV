@@ -22,7 +22,7 @@ body, html {
     flex-direction: column; /* Coloca a imagem e o formulário em coluna */
     align-items: center;    /* Centraliza itens na horizontal */
     text-align: center;     /* Centraliza texto dentro do contêiner */
-    max-width: 400px;      /* Define uma largura máxima */
+    max-width: 500%;      /* Define uma largura máxima */
 }
 div{
     display: flex;
@@ -69,5 +69,7 @@ img{
 
 }
 .enviar:active {
+    background-color: #3e8e41; /* Muda a cor de fundo ao clicar */
+    transform: scale(0.95); /* Diminui um pouco o tamanho ao clicar */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Sombra projetada */
 }

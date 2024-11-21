@@ -1,15 +1,22 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-body, html {
-    height: 100%;
-    display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center;     /* Centraliza verticalmente */
-    background-color: #f0f0f0; /* Cor de fundo opcional */
-}
+body {
+    font-family: Arial, sans-serif; /* Define a fonte usada no corpo */
+    margin: 0; /* Remove a margem padrão */
+    padding: 0; /* Remove o preenchimento padrão */
+    background-color: #f5f5f5; /* Cor de fundo clara */
+    display: flex; /* Usamos Flexbox para organizar o conteúdo */
+    flex-direction: column; /* Organiza os elementos verticalmente */
+    height: 100vh; /* A altura do corpo ocupa a tela inteira */
+  }
+
+  /* Estilo para a área do cabeçalho */
+  .header {
+    padding: 15px; /* Espaçamento interno do cabeçalho */
+    background-color: #f5f5f5; /* Cor de fundo do cabeçalho */
+    text-align: center; /* Alinha o conteúdo do cabeçalho ao centro */
+    position: relative; /* Necessário para posicionar o botão de fechar */
+    border-bottom: 2px solid #e6e6e6; /* Linha de separação abaixo do cabeçalho */
+  }
+
 .form {
     background-color: #fff; /* Cor de fundo do formulário */
     padding: 20px;          /* Espaçamento interno do formulário */
@@ -22,7 +29,7 @@ body, html {
     flex-direction: column; /* Coloca a imagem e o formulário em coluna */
     align-items: center;    /* Centraliza itens na horizontal */
     text-align: center;     /* Centraliza texto dentro do contêiner */
-    max-width: 400px;      /* Define uma largura máxima */
+    max-width: 500px;      /* Define uma largura máxima */
 }
 div{
     display: flex;
@@ -53,6 +60,13 @@ img{
     width: 95%; /* Largura do input (ajustável) */
 
 }
+.enviar:hover {
+    background-color: #45a049; /* Muda a cor de fundo ao passar o mouse */
+    transform: scale(1.05); /* Aumenta um pouco o tamanho ao passar o mouse */
+}
+
 .enviar:active {
+    background-color: #3e8e41; /* Muda a cor de fundo ao clicar */
+    transform: scale(0.95); /* Diminui um pouco o tamanho ao clicar */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Sombra projetada */
 }
