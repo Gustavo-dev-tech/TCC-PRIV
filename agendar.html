@@ -5,61 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendário de Doações</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/css/pikaday.min.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            
-            padding: 0;
-            background-color: #f5f5f5;
-            width: 105%;
-            height: 1200px;
-        }
-
-        #calendar-container {
-            width: 90%;
-            padding: 10px;
-            background-color: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            height: 80%;
-        }
-
-        input, select {
-            width: 95%;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            margin-bottom: 10px;
-        }
-
-        button {
-            width: 95%;
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-
-        
-    </style>
+    <link rel="stylesheet" href="agendar.css">
 </head>
 <body>
     <div id="calendar-container">
-        <h2>Agendar Doação</h2>
-        <label for="datepicker">Escolha uma data:</label>
+        <strong><h2>Agendar Doação</h2></strong>
+        <label for="datepicker">Escolha uma data para agendar uma doação:</label>
         <input type="text" id="datepicker" placeholder="Selecione uma data" />
         
-        <label for="etec">Escolha a ETEC:</label>
-        <select id="etec">
-            <option value="">Selecione uma ETEC</option>
-            <option value="ETEC Hortolândia">ETEC Hortolândia</option>
-            <option value="ETEC Sumaré">ETEC Sumaré</option>
-            <option value="ETEC Campinas">ETEC Campinas</option>
-            <option value="ETEC Piracicaba">ETEC Piracicaba</option>
-        </select>
+        <label for="etec">Envie seu numero de CPF ou RG</label>
+        <input type="number" name="etec" id="etec" placeholder="Os dados serão conferidos na portaria da etec">
 
         <button id="submitBtn">Confirmar Agendamento</button>
         <p id="message"></p>
@@ -90,7 +45,7 @@
                 const messageElement = document.getElementById('message');
 
                 if (isWeekendOrHoliday(selectedDate)) {
-                    messageElement.textContent = 'A data selecionada é um final de semana ou feriado. Escolha outra data.';
+                    messageElement.textContent = 'A data selecionada é um final de semana ou feriado a etec não estara aberta. Escolha outra data.';
                     messageElement.style.color = 'red';
                 } else {
                     messageElement.textContent = `Doação agendada para: ${moment(selectedDate).format('DD/MM/YYYY')}`;
@@ -109,11 +64,11 @@
                 messageElement.textContent = 'A data selecionada é um final de semana ou feriado. Escolha outra data.';
                 messageElement.style.color = 'red';
             } else if (!selectedEtec) {
-                messageElement.textContent = 'Por favor, selecione uma ETEC.';
+                messageElement.textContent = 'Por favor, digite um documento válido.';
                 messageElement.style.color = 'red';
             } else {
                 // Enviar os dados (aqui você pode enviar para outro arquivo ou processar de outra forma)
-                messageElement.textContent = `Agendamento confirmado para: ${moment(selectedDate).format('DD/MM/YYYY')} na ${selectedEtec}.`;
+                messageElement.textContent = `Agendamento confirmado para: ${moment(selectedDate).format('DD/MM/YYYY')} com o responsavel da identidade N° ${selectedEtec}.`;
                 messageElement.style.color = 'green';
 
                 // Simulação do envio dos dados
@@ -128,7 +83,7 @@
                     body: formData
                 }).then(response => response.json())
                   .then(data => {
-                      console.log('Resposta do servidor:', data);
+                      console.log('Resposta do servidor:', "data sera", data);
                   })
                   .catch(error => {
                       console.error('Erro ao enviar dados:', error);

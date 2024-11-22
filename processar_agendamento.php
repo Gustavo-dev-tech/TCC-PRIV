@@ -3,7 +3,7 @@
 header('Content-Type: application/json');
 
 // Caminho para o arquivo JSON onde os agendamentos serão salvos
-$jsonFile = 'agendamento.json'; // Alterado para avisos.json
+$jsonFile = 'ADM/agendamento.json'; // Alterado para avisos.json
 
 // Verifica se os dados foram enviados via POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

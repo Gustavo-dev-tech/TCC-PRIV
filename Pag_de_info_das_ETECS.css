@@ -1,0 +1,94 @@
+.google-maps-link {
+    display: block;
+    margin-top: 1rem;
+    text-decoration: none;
+    color: #4285F4;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.google-maps-link:hover {
+    text-decoration: underline;
+}
+
+/* Reset básico */
+body, h1, h2, p, a {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilização geral */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+p{
+    color: #333;
+}
+.doacao {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: goldenrod;
+    font-weight: bold;   
+    margin-top: 1rem;
+}
+.doacao IMG{
+    margin-right: 0.5rem;
+    width: 24px;
+    height: 24px;
+}
+
+
+/* Header */
+header {
+    background-color: #3e8e41;
+    color: white;
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Main content */
+main {
+    width: 90%;
+    max-width: 600px;
+    margin: 2rem auto;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+.info p, .contato p {
+    margin-bottom: 0.5rem;
+}
+
+.whatsapp-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #25d366;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.whatsapp-link img {
+    margin-right: 0.5rem;
+    width: 24px;
+    height: 24px;
+}
+

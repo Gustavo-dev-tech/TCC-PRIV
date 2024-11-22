@@ -81,42 +81,30 @@
         });
         map.on('load', () => {
         map.setPaintProperty('water', 'fill-color', '#1491F7'); // Cor azul para água
-        map.setPaintProperty('land', 'background-color', '#FFF3EB'); // Cor Branca para terra
-        map.setPaintProperty('road', 'background-color', '#000000'); // Cor Branca para terra
+        map.setPaintProperty('land', 'background-color', ''); // Cor Branca para terra
+        map.setPaintProperty('road', 'background-color', '#3e8e41;'); // Cor Branca para terra
     });
         
         // Dados das ETECs
        // Definição dos dados das ETECs
 const etecs = [
-    { name: "ETEC Polivalente de Americana", latitude: -22.735105637462283, longitude: -47.31459478727817, file: "etec_polivalente_de_americana.html" },
+    { name: "ETEC Polivalente de Americana", latitude: -22.735105637462283, longitude: -47.31459478727817, file: "etec_polivalente_de_americana.html", horario: "Seg-Sex: 8h às 22h", telefone: "+5519998765432"},
+    { name: "ETEC João Belarmino", latitude: -22.705617351907293, longitude: -46.76495686931041, file: "etec_joão_belarmino.html", horario: "Seg-Sex: 8h às 22h", telefone: "+5519998765432"},
+    { name: "ETEC Bento Quirino", latitude: -22.88793299688249, longitude: -47.046732462142984, file: "etec_bento_quirino.html", horario: "Seg-Sex: 8h às 22h", telefone: "+5519998765432"},
+    { name: "ETEC de Hortolândia", latitude: -22.872140239665345, longitude: -47.2101139378577, file: "etec_hortolândia.html", horario: "Seg-Sex: 8h às 22h", telefone: "+5519998765432"},
+    { name: "ETEC de Paulínia", latitude: -22.79573680780621, longitude: -47.11907567007766, file: "etec_paulinia.html", horario: "Seg-Sex: 8h às 22h", telefone: "+5519998765432"},
+    { name: "ETEC Sumaré", latitude: -22.814462832270603, longitude: -47.25084381796481, file: "etec_sumare.html", horario: "Seg-Sex: 8h às 22h", telefone: "+5519998765432"}
 
-    { name: "ETEC João Belarmino", latitude: -22.705617351907293, longitude: -46.76495686931041 },
-    { name: "ETEC de Arthur Nogueira", latitude: -23.5505, longitude: -46.6333 },
-    { name: "ETEC Trajano Camargo", latitude: -22.561806469590504, longitude: -47.16288204603438 },
-    { name: "ETEC Bento Quirino Extensão EE Hercy Moraes", latitude: -22.92700847255418, longitude: -47.11349391981387 },
-    { name: "ETEC Bento Quirino", latitude: -22.88793299688249, longitude: -47.046732462142984 },
-    { name: "ETEC Conselheiro Antônio Prado", latitude: -22.863244456105274, longitude: -47.101615755057644 },
-    { name: "FATEC Bragança Paulista", latitude: -22.894501612487737, longitude: -46.549034232038615 },
-    { name: "ETEC de Hortolândia", latitude: -22.872140239665345, longitude: -47.2101139378577 },
-    { name: "FATEC Indaiatuba", latitude: -23.079486557002966, longitude: -47.20258479811797 },
-    { name: "ETEC Rosa Perrone Scavone", latitude: -23.007801240442593, longitude: -46.84638391841022 },
-    { name: "ETEC Vasco Antônio Venchiarutti", latitude: -23.23023461298903, longitude: -46.87480938915149 },
-    { name: "ETEC Benedito Storani", latitude: -23.181956125967098, longitude: -46.94416058634573 },
-    { name: "ETEC Campo Limpo Paulista", latitude: -23.228026174051692, longitude: -46.76837933517612 },
-    { name: "ETEC Euro Albino de Souza", latitude: -22.34416451414413, longitude: -46.93061606216327 },
-    { name: "ETEC de Paulínia", latitude: -22.79573680780621, longitude: -47.11907567007766 },
-    { name: "ETEC Deputado Ary de Camargo Pedroso", latitude: -22.73401918990181, longitude: -47.658755779032774 },
-    { name: "ETEC Professor Doutor José Dagnoni", latitude: -22.73227588354393, longitude: -47.38161158800669 },
-    { name: "ETEC Sumaré", latitude: -22.814462832270603, longitude: -47.25084381796481 }
 ];
 
 // Adiciona marcadores ao mapa
 etecs.forEach(etec => {
-        new mapboxgl.Marker()
-            .setLngLat([etec.longitude, etec.latitude])
-            .setPopup(new mapboxgl.Popup().setHTML(`<a href="javascript:void(0);" onclick="carregarDetalhes('${etec.file}')">${etec.name}</a>`))
-            .addTo(map);
-    });
+    new mapboxgl.Marker()
+        .setLngLat([etec.longitude, etec.latitude])
+        .setPopup(new mapboxgl.Popup().setHTML(`<a href="${etec.file}" target="_blank">${etec.name}</a>`))
+        .addTo(map);
+});
+
 
     // Função para carregar os detalhes da ETEC diretamente no conteúdo
     function carregarDetalhes(fileName) {
@@ -137,6 +125,42 @@ etecs.forEach(etec => {
                 document.getElementById('conteudo').innerHTML = '<p>Não foi possível carregar as informações dessa ETEC. Tente novamente mais tarde.</p>';
             });
     }
+    // Captura a localização exata do usuário
+let userLocation = null;
+
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+        position => {
+            userLocation = {
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude
+            };
+
+            // Adiciona um marcador para a localização do usuário no mapa
+            new mapboxgl.Marker({ color: '#3e8e41' })
+                .setLngLat([userLocation.longitude, userLocation.latitude])
+                .setPopup(new mapboxgl.Popup().setHTML('<strong>Sua localização</strong>'))
+                .addTo(map);
+
+            // Dá zoom no mapa para a localização do usuário
+            map.flyTo({
+                center: [userLocation.longitude, userLocation.latitude],
+                zoom: 14, // Define o nível de zoom (ajustável)
+                essential: true // Permite animação suave
+            });
+
+            console.log("Localização do usuário:", userLocation);
+        },
+        error => {
+            console.error("Erro ao obter a localização do usuário:", error);
+        },
+        { enableHighAccuracy: true }
+    );
+} else {
+    console.warn("Geolocalização não é suportada neste navegador.");
+}
+
+
 
     </script>
 

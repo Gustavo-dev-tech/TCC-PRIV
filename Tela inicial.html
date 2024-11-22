@@ -5,13 +5,87 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DoeLab</title>
-    <link rel="stylesheet" href="Tela inicial.css">
+    
 </head>
+
+<style>
+    body {
+    font-family: Arial, sans-serif; /* Define a fonte usada no corpo */
+    margin: 0; /* Remove a margem padrão */
+    padding: 0; /* Remove o preenchimento padrão */
+    background-color: #f5f5f5; /* Cor de fundo clara */
+    display: flex; /* Usamos Flexbox para organizar o conteúdo */
+    flex-direction: column; /* Organiza os elementos verticalmente */
+    height: 100vh; /* A altura do corpo ocupa a tela inteira */
+  }
+
+  /* Estilo para a área do cabeçalho */
+  .header {
+    padding: 15px; /* Espaçamento interno do cabeçalho */
+    background-color: #f5f5f5; /* Cor de fundo do cabeçalho */
+    text-align: center; /* Alinha o conteúdo do cabeçalho ao centro */
+    position: relative; /* Necessário para posicionar o botão de fechar */
+    border-bottom: 2px solid #e6e6e6; /* Linha de separação abaixo do cabeçalho */
+  }
+
+.form {
+    background-color: #fff; /* Cor de fundo do formulário */
+    padding: 20px;          /* Espaçamento interno do formulário */
+    border-radius: 8px;     /* Bordas arredondadas */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    width: 101%;            /* Faz o formulário ocupar toda a largura do contêiner */
+    height: 900px;
+}
+.formulario {
+    flex-direction: column; /* Coloca a imagem e o formulário em coluna */
+    align-items: center;    /* Centraliza itens na horizontal */
+    text-align: center;     /* Centraliza texto dentro do contêiner */
+    max-width: 500px;      /* Define uma largura máxima */
+}
+div{
+    display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: white; 
+   }
+h2,h3,h4,h5,h6{
+    font-family: Roboto;
+    color: black;
+}
+img{
+    max-width: 100%;  /* Ajusta a largura da imagem */
+    height: auto;      /* Mantém a proporção da imagem */
+    margin-bottom: -25px; /* Espaçamento entre imagem e formulário */
+}
+.enviar{
+    color: rgb(255, 255, 255);
+    background-color:#4CAF50;
+    font-family: Roboto;
+    font-size: 1em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    border: 1px solid black; /* Cor e espessura da borda */
+    border-radius: 12px; /* Valor para bordas arredondadas */
+    padding: 10px 20px; /* Espaçamento interno */
+    width: 95%; /* Largura do input (ajustável) */
+
+}
+.enviar:hover {
+    background-color: #45a049; /* Muda a cor de fundo ao passar o mouse */
+    transform: scale(1.05); /* Aumenta um pouco o tamanho ao passar o mouse */
+}
+
+.enviar:active {
+    background-color: #3e8e41; /* Muda a cor de fundo ao clicar */
+    transform: scale(0.95); /* Diminui um pouco o tamanho ao clicar */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Sombra projetada */
+} 
+</style>
+
+
 <body>
     <div class="formulario">
     <form class="form" action="" method="post">

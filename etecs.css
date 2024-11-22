@@ -71,7 +71,7 @@ color: black;
      z-index: 1000; /* Para garantir que o input fique sobre o mapa */
      display: flex;
      align-items: center;
-     background-color: #A9E08F; /* Cor de fundo verde */
+     background-color: #3e8e41;; /* Cor de fundo verde */
      border-radius: 13px; /* Arredonda o Search*/
      padding: 1px;
      box-shadow: 10px; /* Remove sombra */
@@ -107,6 +107,6 @@ color: black;
  height: 20px;
 }
 .search-bar:active {
-  background-color: #3e8e41; /* Muda a cor de fundo ao clicar */
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Sombra projetada */
+  border: black 2px;
 }
