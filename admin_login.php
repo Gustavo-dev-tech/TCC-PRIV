@@ -28,12 +28,19 @@ $admins = [
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'] ?? '';
     $password = $_POST['password'] ?? '';
+    $buttonClicked = $_POST['action'] ?? ''; // Identifica qual botão foi clicado
 
     // Verifica se o e-mail e a senha correspondem a alguma entrada no array
     if (isset($admins[$email]) && $admins[$email] === $password) {
         $_SESSION['is_admin'] = true;
         $_SESSION['admin_email'] = $email;
-        header("Location: admin_dashboard.php"); // Redireciona para a página de administração
+
+        // Redireciona de acordo com o botão clicado
+        if ($buttonClicked === 'dashboard') {
+            header("Location: admin_dashboard.php");
+        } elseif ($buttonClicked === 'calendario') {
+            header("Location: calendario_admin.html");
+        }
         exit;
     } else {
         $error = "E-mail ou senha inválidos.";
@@ -95,12 +102,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['date']) && isset($_PO
 </head>
 <body>
   <div class="login-container">
+    <br><br><br><br>
     <h1>Login do Administrador</h1>
     <form method="POST">
-      <input type="email" name="email" placeholder="Digite o e-mail da ETEC" required>
+        <label for="">115@ETEC</label>
+      <input type="email" name="email" placeholder="Digite o código da ETEC" required>
+      <label for="">H115</label>
       <input type="password" name="password" placeholder="Senha" required>
-      <button type="submit">Entrar</button>
+      <br>
+      <button type="submit" name="action" value="dashboard">Adicionar aviso no calendario de adm  </button>
+      <br><br>
+      <button type="submit"  name="action" value="calendario">Solicitações de agendamento de usuarios</button>
     </form>
+    
     <?php if (isset($error)) { echo "<p class='error'>$error</p>"; } ?>
   </div>
 </body>

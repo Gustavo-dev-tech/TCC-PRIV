@@ -1,4 +1,4 @@
-fetch('etecs.json') // Supondo que você tenha um arquivo chamado etecs.json
+fetch('etecs.json') 
     .then(response => response.json())
     .then(etecs => {
         etecs.forEach(etec => {

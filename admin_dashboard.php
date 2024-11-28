@@ -26,49 +26,38 @@ function isAdminLoggedIn() {
 
 // Adicionar um aviso
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['date']) && isset($_POST['message'])) {
-    if (isAdminLoggedIn()) {
-        $date = $_POST['date'];
-        $message = $_POST['message'];
+  if (isAdminLoggedIn()) {
+      $date = $_POST['date'];
+      $message = $_POST['message'];
 
-        // Carrega os avisos existentes
-        $avisos = loadAvisos();
+      // Carrega os avisos existentes
+      $avisos = loadAvisos();
 
-        // Se não houver um aviso para essa data, cria um array para ela
-        if (!isset($avisos[$date])) {
-            $avisos[$date] = [];
-        }
+      // Se não houver um aviso para essa data, cria um array para ela
+      if (!isset($avisos[$date])) {
+          $avisos[$date] = [];
+      }
 
-        // Adiciona o novo aviso
-        $avisos[$date][] = $message;
+      // Adiciona o novo aviso
+      $avisos[$date][] = $message;
 
-        // Salva os avisos no arquivo
-        saveAvisos($avisos);
+      // Salva os avisos no arquivo
+      saveAvisos($avisos);
 
-        header('Content-Type: application/json');
-        echo json_encode(['success' => true, 'message' => 'Aviso salvo com sucesso.']);
-        exit;
-    } else {
-        http_response_code(403);
-        echo json_encode(['error' => 'Acesso negado']);
-        exit;
-    }
+      // Resposta HTML com o link funcional
+      echo '<p>Aviso salvo com sucesso.</p>';
+      echo '<a href="Doar.html">Voltar para a página de Doação</a>';
+      exit;
+  } else {
+      http_response_code(403);
+
+      // Resposta HTML com o link funcional
+      echo '<p>Acesso negado.</p>';
+      echo '<a href="Doar.html">Voltar para a página de Doação</a>';
+      exit;
+  }
 }
 
-// Retorna os avisos para o calendário (requisição GET)
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'getAvisos') {
-    if (!isAdminLoggedIn()) {
-        http_response_code(403);
-        echo json_encode(['error' => 'Acesso negado']);
-        exit;
-    }
-
-    // Carrega os avisos
-    $avisos = loadAvisos();
-
-    header('Content-Type: application/json');
-    echo json_encode($avisos);
-    exit;
-}
 
 ?>
 <!DOCTYPE html>
