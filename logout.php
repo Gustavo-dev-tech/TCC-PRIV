@@ -1,6 +1,12 @@
 <?php
+// Iniciar a sessão
 session_start();
+
+// Destruir a sessão
+session_unset();
 session_destroy();
-header("Location: admin_login.php");
-exit;
+
+// Redirecionar para a página de login
+header("Location: login.php");
+exit();
 ?>

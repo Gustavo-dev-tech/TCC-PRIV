@@ -71,7 +71,8 @@ color: black;
      z-index: 1000; /* Para garantir que o input fique sobre o mapa */
      display: flex;
      align-items: center;
-     background-color: #3e8e41;; /* Cor de fundo verde */
+     justify-content: center;
+     background-color: #4CAF50; /* Cor de fundo verde */
      border-radius: 13px; /* Arredonda o Search*/
      padding: 1px;
      box-shadow: 10px; /* Remove sombra */
@@ -109,4 +110,31 @@ color: black;
 .search-bar:active {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Sombra projetada */
   border: black 2px;
+}
+.suggestions {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.suggestion-item {
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  border-bottom: 1px solid #eee;
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.suggestion-item:hover {
+  background-color: #f0f0f0;
 }

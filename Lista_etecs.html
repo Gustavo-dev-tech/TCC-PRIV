@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de ETECs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .etec-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .etec-item {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            background-color: #f9f9f9;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .etec-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .etec-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .etec-info {
+            font-size: 14px;
+            color: #555;
+            margin: 2px 0;
+        }
+
+        .etec-link {
+            text-decoration: none;
+            color: #fff;
+            background-color: #4CAF50;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-align: center;
+            display: inline-block;
+            margin-top: 10px;
+            transition: background-color 0.2s;
+        }
+
+        .etec-link:hover {
+            background-color: #45a049;
+        }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #4CAF50;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #45a049;
+        }
+
+        .back-button svg {
+            width: 24px;
+            height: 24px;
+            stroke: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Lista de ETECs</h1>
+     <!-- Botão de voltar -->
+     <a href="etecs.html" class="back-button" title="Voltar para a lista de ETECs">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+        </svg>
+    </a>
+
+    <ul class="etec-list">
+        <li class="etec-item">
+            <div class="etec-name">ETEC Polivalente de Americana</div>
+            <div class="etec-info">Horário: Seg-Sex: 8h às 22h</div>
+            <div class="etec-info">Telefone: +55 19 998765432</div>
+            <a class="etec-link" href="etec_polivalente_de_americana.html">Ver Detalhes</a>
+        </li>
+        <li class="etec-item">
+            <div class="etec-name">ETEC João Belarmino</div>
+            <div class="etec-info">Horário: Seg-Sex: 8h às 22h</div>
+            <div class="etec-info">Telefone: +55 19 998765432</div>
+            <a class="etec-link" href="etec_joão_belarmino.html">Ver Detalhes</a>
+        </li>
+        <li class="etec-item">
+            <div class="etec-name">ETEC Bento Quirino</div>
+            <div class="etec-info">Horário: Seg-Sex: 8h às 22h</div>
+            <div class="etec-info">Telefone: +55 19 998765432</div>
+            <a class="etec-link" href="etec_bento_quirino.html">Ver Detalhes</a>
+        </li>
+        <li class="etec-item">
+            <div class="etec-name">ETEC de Hortolândia</div>
+            <div class="etec-info">Horário: Seg-Sex: 8h às 22h</div>
+            <div class="etec-info">Telefone: +55 19 998765432</div>
+            <a class="etec-link" href="etec_hortolândia.html">Ver Detalhes</a>
+        </li>
+        <li class="etec-item">
+            <div class="etec-name">ETEC de Paulínia</div>
+            <div class="etec-info">Horário: Seg-Sex: 8h às 22h</div>
+            <div class="etec-info">Telefone: +55 19 998765432</div>
+            <a class="etec-link" href="etec_paulinia.html">Ver Detalhes</a>
+        </li>
+        <li class="etec-item">
+            <div class="etec-name">ETEC Sumaré</div>
+            <div class="etec-info">Horário: Seg-Sex: 8h às 22h</div>
+            <div class="etec-info">Telefone: +55 19 998765432</div>
+            <a class="etec-link" href="etec_sumare.html">Ver Detalhes</a>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>

@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Mapa das ETECs do Brasil</title>
+    <title>Mapa das ETECs de São paulo</title>
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css" rel="stylesheet" />
     <link rel="stylesheet" href="etecs.css">
@@ -35,7 +35,7 @@
             </a>
         </li>
         <li>
-            <a href="perfil.html"> <!--PERFIL-->
+            <a href="perfil.php"> <!--PERFIL-->
                 <p class="ICONE">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
@@ -55,7 +55,7 @@
                 </a>
             </li> <!--Etecs FAVORITAS-->
             <li>
-                <a href="DOAR/Doar.html"><!--DOAR-->
+                <a href="Lista_etecs.html"><!--DOAR-->
                     <p class="ICONE">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                             <path d="M3.375 3C2.339 3 1.5 3.84 1.5 4.875v.75c0 1.036.84 1.875 1.875 1.875h17.25c1.035 0 1.875-.84 1.875-1.875v-.75C22.5 3.839 21.66 3 20.625 3H3.375Z" />
@@ -104,6 +104,91 @@ etecs.forEach(etec => {
         .setPopup(new mapboxgl.Popup().setHTML(`<a href="${etec.file}" target="_blank">${etec.name}</a>`))
         .addTo(map);
 });
+
+
+   
+
+      // Função de busca
+    function searchEtec() {
+        const searchValue = document.getElementById('search-input').value.trim().toLowerCase();
+
+        // Busca pelo nome
+        const etecFound = etecs.find(etec => 
+            etec.name.toLowerCase().includes(searchValue)
+        );
+
+        if (etecFound) {
+            // Centraliza o mapa na ETEC encontrada
+            map.flyTo({
+                center: [etecFound.longitude, etecFound.latitude],
+                zoom: 14,
+                essential: true
+            });
+
+            new mapboxgl.Popup()
+                .setLngLat([etecFound.longitude, etecFound.latitude])
+                .setHTML(`<strong>${etecFound.name}</strong>`)
+                .addTo(map);
+
+            clearSuggestions();
+        } else {
+            alert("ETEC não encontrada. Tente novamente.");
+        }
+    }
+
+    // Exibir sugestões
+    function showSuggestions() {
+        const input = document.getElementById('search-input').value.trim().toLowerCase();
+        const suggestionsBox = document.getElementById('suggestions');
+        
+        if (input === "") {
+            suggestionsBox.style.display = "none";
+            return;
+        }
+
+        const filteredEtecs = etecs.filter(etec =>
+            etec.name.toLowerCase().includes(input)
+        );
+
+        suggestionsBox.innerHTML = "";
+        if (filteredEtecs.length > 0) {
+            filteredEtecs.slice(0, 2).forEach(etec => {
+                const suggestionItem = document.createElement('div');
+                suggestionItem.className = "suggestion-item";
+                suggestionItem.textContent = etec.name;
+
+                // Ao clicar na sugestão, centraliza no mapa
+                suggestionItem.onclick = () => {
+                    document.getElementById('search-input').value = etec.name;
+                    map.flyTo({
+                        center: [etec.longitude, etec.latitude],
+                        zoom: 14,
+                        essential: true
+                    });
+
+                    // Exibe o popup
+                    new mapboxgl.Popup()
+                        .setLngLat([etec.longitude, etec.latitude])
+                        .setHTML(`<strong>${etec.name}</strong>`)
+                        .addTo(map);
+
+                    clearSuggestions();
+                };
+
+                suggestionsBox.appendChild(suggestionItem);
+            });
+            suggestionsBox.style.display = "block";
+        } else {
+            suggestionsBox.style.display = "none";
+        }
+    }
+
+    // Limpar sugestões
+    function clearSuggestions() {
+        document.getElementById('suggestions').style.display = "none";
+    }
+
+    
 
 
     // Função para carregar os detalhes da ETEC diretamente no conteúdo

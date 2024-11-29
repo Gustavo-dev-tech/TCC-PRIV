@@ -1,4 +1,5 @@
-* {
+
+        * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -6,6 +7,7 @@
 body, html {
     height: 100%;
     display: flex;
+    font-family: Arial, Helvetica, sans-serif;
     justify-content: center; /* Centraliza horizontalmente */
     align-items: center;     /* Centraliza verticalmente */
     background-color: #f0f0f0; /* Cor de fundo opcional */
@@ -15,8 +17,8 @@ body, html {
     padding: 20px;          /* Espaçamento interno do formulário */
     border-radius: 8px;     /* Bordas arredondadas */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    width: 101%;            /* Faz o formulário ocupar toda a largura do contêiner */
     height: 900px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .formulario {
     flex-direction: column; /* Coloca a imagem e o formulário em coluna */
@@ -24,15 +26,23 @@ body, html {
     text-align: center;     /* Centraliza texto dentro do contêiner */
     width: 100%;      /* Define uma largura máxima */
     height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 div{
     display: flex;
    justify-content: center;
    align-items: center;
+   
    background-color: white; 
    }
 h2,h3,h4,h5,h6{
-    font-family: Roboto;
+    position: absolute;
+    top: 10px; /* Define a distância do topo */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translateX(-50%);
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif; 
+    
     color: black;
 }
 img{
@@ -41,28 +51,40 @@ img{
     margin-bottom: -25px; /* Espaçamento entre imagem e formulário */
 }
 .insirir{
-    font-family: Roboto;
+    
     font-size: 1em;
     font-weight: bold;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
     border: 1px solid rgb(0, 0, 0);
-    border-radius: 22px; /* para bordas arredondadas */
+    border-radius: 7px; /* para bordas arredondadas */
     padding: 10px; /* Espaçamento interno */
     width: 80%; /* Largura do input (ajustável) */
 }
+.enviarr{
+    color: rgb(255, 255, 255);
+    background-color:#4CAF50;
+    bottom: 20px;
+    left: 50%;
+    
+
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+}
 .enviar{
     color: rgb(255, 255, 255);
-    background-color:#A9E08F;
-    font-family: Roboto;
-    font-size: 1em;
-    font-weight: bolder;
-
-    margin-bottom: 15px;
-    border: 1px solid black; /* Cor e espessura da borda */
-    border-radius: 22px; /* Valor para bordas arredondadas */
-    padding: 10px 20px; /* Espaçamento interno */
-    width: 80%; /* Largura do input (ajustável) */
-
+    background-color:#4CAF50;
+    position: absolute;
+    bottom: 270px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
 }
 .enviar:active {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Sombra projetada */
@@ -87,6 +109,7 @@ button {
     cursor: pointer;
 }
 
+
 #remove-photo-btn {
     background-color: #f44336; /* Cor vermelha para o botão de remover */
     border-radius: 22px;
@@ -106,4 +129,28 @@ button:hover {
     border-radius: 50%; /* Torna a imagem redonda */
     object-fit: cover;
     border: 2px solid #ccc; /* Borda da imagem */
+}
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #4CAF50;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #45a049;
+}
+
+.back-button svg {
+    width: 24px;
+    height: 24px;
+    stroke: white;
 }

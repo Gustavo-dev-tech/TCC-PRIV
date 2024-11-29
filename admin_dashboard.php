@@ -45,15 +45,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['date']) && isset($_PO
       saveAvisos($avisos);
 
       // Resposta HTML com o link funcional
-      echo '<p>Aviso salvo com sucesso.</p>';
-      echo '<a href="Doar.html">Voltar para a página de Doação</a>';
+      echo  "<span style='font-size: 64px; font-weight: bold;'>Aviso salvo com sucesso.</span>'";
+      echo '<a href="Doar.html">Ir para a página de calendario de Doações</a>';
       exit;
   } else {
       http_response_code(403);
 
       // Resposta HTML com o link funcional
       echo '<p>Acesso negado.</p>';
-      echo '<a href="Doar.html">Voltar para a página de Doação</a>';
+      echo '<a href="Doar.html">Voltar para a página de adicionar Doações</a>';
       exit;
   }
 }
